@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 Route::get('blog', 'BlogController@index');
 Route::get('blog/{slug}', 'BlogController@showPost');
-Route::get('posts',['as' => 'home', 'uses' => 'PostController@index']);
 
 // Authentication
 Route::controllers([
@@ -27,10 +26,11 @@ Route::controllers([
 Route::group(['middleware' => ['auth']], function()
 {
 	//Route::get('posts', 'PostController@index');
+	Route::get('posts',['as' => 'home', 'uses' => 'PostController@index']);
 	// show new post form
 	Route::get('posts/new-post', 'PostController@create');
 	// save new post
-	Route::post('posts/new-post', 'PostController@store');
+	Route::post('posts/store', 'PostController@store');
 	// edit post form
 	Route::get('posts/edit/{slug}', 'PostController@edit');
 	// update post

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use App\Category;
 use App\User;
 use Redirect;
+use DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostFormRequest;
 use Illuminate\Http\Request;
@@ -21,9 +23,10 @@ class PostController extends Controller
     public function create(Request $request)
 	{
 		// if user can post i.e. user is admin or author
-		if($request->user()->can_post())
+		if($request->user()->is_admin())
 		{
-			return view('posts.create');
+      $category = Category::select('id', 'category')->distinct()->get();
+			return view('posts.create', ['category' => $category]);
 		}    
 		else 
 		{
@@ -32,6 +35,7 @@ class PostController extends Controller
 	}
 	public function store(PostFormRequest $request)
 	{
+    return request()->all();
 		$post = new Post();
 		$post->title = $request->get('title');
 		$post->content = $request->get('content');
@@ -48,7 +52,7 @@ class PostController extends Controller
 		  $message = 'Post published successfully';
 		}
 		$post->save();
-		return redirect('edit/'.$post->slug)->withMessage($message);
+		return redirect('posts/'.$post->slug)->withMessage($message);
 	}
 	public function show($slug)
 	  {
@@ -61,10 +65,11 @@ class PostController extends Controller
 	    return view('posts.show')->withPost($post)->withComments($comments);
 	  }
 	public function edit(Request $request,$slug)
-  { 
-    $post = Post::where('slug',$slug)->first();
+  {
+    $category = Category::select('id', 'category')->distinct()->get();
+    $post = Post::join('categories', 'posts.category_id', '=', 'categories.id')->where('slug',$slug)->first();
     if($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
-      return view('posts.edit')->with('post',$post);
+      return view('posts.edit', ['post' => $post], ['category' => $category]);
     return redirect('/')->withErrors('you have not sufficient permissions');
   }
   public function update(Request $request)

@@ -6,6 +6,7 @@
 @if ( !$posts->count() )
 There is no post till now. Login and write a new post now!!!
 @else
+<button class="btn btn-success"><a href="{{ url('posts/new-post')}}">Add new post</a></button>
 <div class="">
   <table border="1">
   <tr>
@@ -30,8 +31,8 @@ There is no post till now. Login and write a new post now!!!
       <td>{{$post->created_at}}</td>
       <td>
         @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
-            <button class="btn" class="btn btn-success"><a href="{{ url('posts/edit/'.$post->slug)}}">Edit</a></button>
-            <button class="btn" class="btn btn-success"><a href="{{ url('posts/delete/'.$post->id)}}">Delete</a></button>
+            <button class="btn btn-success"><a href="{{ url('posts/edit/'.$post->slug)}}">Edit</a></button>
+            <button class="btn btn-success"><a href="{{ url('posts/delete/'.$post->id)}}">Delete</a></button>
           @endif
       </td>
   </tr>
