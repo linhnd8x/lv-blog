@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blog Demo | Find All Together</title>
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -47,7 +48,7 @@
               <ul class="dropdown-menu" role="menu">
                 @if (Auth::user()->can_post())
                 <li>
-                  <a href="{{ url('/new-post') }}">Add new post</a>
+                  <a href="{{ url('posts/new-post') }}">Add new post</a>
                 </li>
                 <li>
                   <a href="{{ url('/user/'.Auth::id().'/posts') }}">My Posts</a>
@@ -107,4 +108,5 @@
     <!-- Scripts -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
   </body>

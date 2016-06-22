@@ -15,14 +15,6 @@ Add New Post
 </script>
 
 <form action="{{ url("posts/store") }}" method="post">
-  <div class="form-group">
-  <label for="category">Category:</label>
-  <select class="form-control" id="category" required="required">
-      @foreach($category as $cat)
-          <option value="{{$cat->id}}">{{$cat->category}}</option>
-      @endforeach
-  </select>
-</div>
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <div class="form-group">
     <input required="required" placeholder="Enter title here" type="text" name = "title" class="form-control" />
@@ -30,6 +22,14 @@ Add New Post
   <div class="form-group">
     <textarea name='content' class="form-control"></textarea>
   </div>
+  <div class="form-group">
+  <label for="category">Category:</label>
+  <select class="form-control" id="category" required="required" name="category">
+      @foreach($category as $cat)
+          <option value="{{$cat->id}}">{{$cat->category}}</option>
+      @endforeach
+  </select>
+</div>
   <input type="submit" name='publish' class="btn btn-success" value = "Publish"/>
   <input type="submit" name='save' class="btn btn-default" value = "Save Draft" />
 </form>

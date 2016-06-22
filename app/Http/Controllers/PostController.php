@@ -35,8 +35,9 @@ class PostController extends Controller
 	}
 	public function store(PostFormRequest $request)
 	{
-    return request()->all();
+    //return request()->all();
 		$post = new Post();
+    $post->category_id = $request->get('category');
 		$post->title = $request->get('title');
 		$post->content = $request->get('content');
 		$post->slug = str_slug($post->title);
@@ -52,7 +53,7 @@ class PostController extends Controller
 		  $message = 'Post published successfully';
 		}
 		$post->save();
-		return redirect('posts/'.$post->slug)->withMessage($message);
+		return redirect('posts/')->withMessage($message);
 	}
 	public function show($slug)
 	  {
@@ -67,7 +68,7 @@ class PostController extends Controller
 	public function edit(Request $request,$slug)
   {
     $category = Category::select('id', 'category')->distinct()->get();
-    $post = Post::join('categories', 'posts.category_id', '=', 'categories.id')->where('slug',$slug)->first();
+    $post = Post::where('slug',$slug)->first();
     if($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
       return view('posts.edit', ['post' => $post], ['category' => $category]);
     return redirect('/')->withErrors('you have not sufficient permissions');
@@ -75,10 +76,12 @@ class PostController extends Controller
   public function update(Request $request)
   {
     //
+    //return request()->all();
     $post_id = $request->input('post_id');
     $post = Post::find($post_id);
     if($post && ($post->author_id == $request->user()->id || $request->user()->is_admin()))
     {
+      $category_id = $request->input('category');
       $title = $request->input('title');
       $slug = str_slug($title);
       $duplicate = Post::where('slug',$slug)->first();
@@ -93,6 +96,7 @@ class PostController extends Controller
           $post->slug = $slug;
         }
       }
+      $post->category_id = $category_id;
       $post->title = $title;
       $post->content = $request->input('content');
       if($request->has('save'))
@@ -106,7 +110,7 @@ class PostController extends Controller
         $message = 'Post updated successfully';
         $landing = 'posts';
       }
-      $post->save();
+      $post->update();
            return redirect($landing)->withMessage($message);
     }
     else
