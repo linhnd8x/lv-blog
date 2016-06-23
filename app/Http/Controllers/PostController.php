@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use App\Tag;
+use App\PostTag;
 use App\Category;
 use App\User;
 use Redirect;
@@ -27,7 +29,7 @@ class PostController extends Controller
             $postArr[] = array (
                 'no' => ($key + 1),
                 'title' => ($post->title),
-                'created_at' => $post->created_at->format('m/d/Y'),
+                'created_at' => '11',//$post->created_at->format('m/d/Y'),
                 'content' => ($post->content),
                 'status' => ($post->active == 1) ? "<a href='{$statusLink}'>Active</a>" : "<a href='{$statusLink}'>De-Active</a>",
                 'option' => "<a href='{$editLink}'>Edit</a> | <a class='delete_link' href='{$deleteLink}'>Delete</a>" 
@@ -58,23 +60,53 @@ class PostController extends Controller
 	public function store(PostFormRequest $request)
 	{
     //return request()->all();
-		$post = new Post();
-    $post->category_id = $request->get('category');
-		$post->title = $request->get('title');
-		$post->content = $request->get('content');
-		$post->slug = str_slug($post->title);
-		$post->author_id = $request->user()->id;
+    $tags = new Tag();
+    $post = new Post();
+    $postTags = new PostTag();
+  
+    $postIns = array();
+    $tagsIns = array();
+    $tagId = array();
+
+    $postIns['category_id'] = $request->get('category');
+		$postIns['title'] = $request->get('title');
+		$postIns['content'] = $request->get('content');
+		$postIns['slug'] = str_slug($postIns['title']);
+		$postIns['author_id'] = $request->user()->id;
 		if($request->has('save'))
 		{
-		  $post->active = 0;
+		  $postIns['active'] = 0;
 		  $message = 'Post saved successfully';            
 		}            
 		else 
 		{
-		  $post->active = 1;
+		  $postIns['active'] = 1;
 		  $message = 'Post published successfully';
 		}
-		$post->save();
+    $existPost = Post::where('slug',$postIns['slug'])->first();
+    if (! $existPost) {
+      $tagArr = explode(',', $request->get('tags'));
+     
+      foreach ($tagArr as $val) {
+        $exist = Tag::where('tag',$val)->first();
+        if (! $exist) {
+          $tagsIns['tag'] = $val;
+          $tagId[] =  $tags->insertGetId($tagsIns);
+        }
+      }
+
+      $postInsId = $post->insertGetId($postIns);
+
+      $postTagsIns = array();
+      foreach ($tagId as $id) {
+        $postTagsIns['post_id'] = $postInsId;
+        $postTagsIns['tag_id'] = $id;
+        $postTags->insert($postTagsIns);
+      }
+    } else {
+        $message = 'Post save unsuccessfully'; 
+    }
+
 		return redirect('posts/')->withMessage($message);
 	}
 	public function show($slug)

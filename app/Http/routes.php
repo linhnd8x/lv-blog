@@ -37,6 +37,20 @@ Route::group(['middleware' => ['auth']], function()
 	Route::post('posts/update', 'PostController@update');
 	// delete post
 	Route::get('posts/delete/{id}', ['as' => 'delete-post', 'uses' => 'PostController@delete']);
+
+	//Route::get('posts', 'PostController@index');
+	Route::get('category',['as' => 'category', 'uses' => 'CategoryController@index']);
+	// show new post form
+	Route::get('category/new-category', ['as' => 'new-category', 'uses' => 'CategoryController@create']);
+	// save new post
+	Route::post('category/store', 'CategoryController@store');
+	// edit post form
+	Route::get('category/edit/{id}', ['as' => 'edit-category', 'uses' => 'CategoryController@edit']);
+	// update post
+	Route::post('category/update', 'CategoryController@update');
+	// delete post
+	Route::get('category/delete/{id}', ['as' => 'delete-category', 'uses' => 'CategoryController@delete']);
+
 	// display user's all posts
 	Route::get('my-all-posts','UserController@user_posts_all');
 	// display user's drafts

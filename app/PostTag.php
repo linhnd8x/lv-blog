@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostTag extends Model
 {
-     protected $fillable = array('post_id', 'tag_id');
+	protected $table = 'blog_post_tags';
+     protected $fillable = ['post_id', 'tag_id'];
 }
