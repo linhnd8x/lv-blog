@@ -1,63 +1,74 @@
 @extends('layouts.app')
-@section('title')
-{{$title}}
-@endsection
-@section('content')
-@if ( !$posts->count() )
-There is no post till now. Login and write a new post now!!!
-@else
-<button class="btn btn-success"><a href="{{ url('posts/new-post')}}">Add new post</a></button>
-<div class="">
-  <table border="1">
-  <tr>
-      <th>ID</th>
-      <th>TITLE</th>
-      <th>STATUS</th>
-      <th>CREATE DATE</th>
-      <th>ACTION</th>
-  </tr>
+  @section('content')
+    <!-- MAIN CONTENT -->
+    <div class="row">
+      <!-- Conversation -->
+      <div class="col-sm-12 view-list-tbl">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"> {{ $title }}</h3>                    
+        </div>
+        <div class="panel-body">
+          
+          <script type="text/javascript">
+          jQuery(document).ready(function($)
+          {
+           var dataSet = {!! $posts !!};
+            $("#post-tbl").dataTable({
+              aLengthMenu: [
+                    [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+                  ],
+                  "data": dataSet,
+                  dom: '<".col-xs-6 padL0"f><".col-xs-6 btn-wrap"l>rt<"bottom"ip><"clear">',
+                  iDisplayLength: 10 , //default 20 entries
+                  bLengthChange : false,
+                  bFilter : true,
+                  columns : [
+                    { "data": "no","width": "10%" },
+                    { "data": "title" ,"width": "38%"},
+                    { "data": "created_at" ,"width": "18%" },  
+                    { "data": "status" ,"width": "15%" },
+                    { "data": "option","width": "20%", "bSortable": false }
+                  ],
+                  "createdRow": function ( row, data, index ) {
+                    $('td', row).eq(0).css({'text-align':'center'});
+                    $('td', row).eq(2).css({'text-align':'center'});
+                    $('td', row).eq(3).css({'text-align':'center'});
+                    $('td', row).eq(4).css({'text-align':'center'});
+                    $('td', row).eq(1).attr('data-toggle', 'tooltip');
+                    $('td', row).eq(1).attr('data-placement', 'top');
+                    $('td', row).eq(1).attr('title', data.content);
+                  },
+                  
+                });
+              $("div.btn-wrap" ).append('<a class="btn btn-blue pull-right" href="{!! $addurl !!}" ><i class="fa fa-plus visible-xs"></i> <span class="hidden-xs">New Post</span></a>');
+              });
 
-  @foreach( $posts as $post )
-  <tr>
-      <td>{{$post->id}}</td>
-      <td><a href="{{ url('posts/'.$post->slug) }}">{{ $post->title }}</a></td>
-      <td>
-         @if($post->active == '1')
-            <a href="{{ url('posts/unpusblished') }}">Unpublished</a>
-          @else
-            <a href="{{ url('posts/pusblished') }}">Published</a>
-          @endif 
-      </td>
-      <td>{{$post->created_at}}</td>
-      <td>
-        @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
-            <button class="btn btn-success"><a href="{{ url('posts/edit/'.$post->slug)}}">Edit</a></button>
-            <button class="btn btn-success"><a href="{{ url('posts/delete/'.$post->id)}}">Delete</a></button>
-          @endif
-      </td>
-  </tr>
-  <!-- <div class="list-group">
-    <div class="list-group-item">
-      <h3><a href="{{ url('posts/'.$post->slug) }}">{{ $post->title }}</a>
-        @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
-          @if($post->active == '1')
-          <button class="btn" style="float: right"><a href="{{ url('posts/edit/'.$post->slug)}}">Edit Post</a></button>
-          @else
-          <button class="btn" style="float: right"><a href="{{ url('posts/edit/'.$post->slug)}}">Edit Draft</a></button>
-          @endif
-        @endif
-      </h3>
-      <p>{{ $post->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a></p>
-    </div>
-    <div class="list-group-item">
-      <article>
-        {!! str_limit($post->body, $limit = 1500, $end = '....... <a href='.url("/".$post->slug).'>Read More</a>') !!}
-      </article>
-    </div>
-  </div> -->
-  @endforeach
-  </table>
-  {!! $posts->render() !!}
-</div>
-@endif
-@endsection
+          
+
+          </script>
+          
+<!--           <div class="add-new-post">                       
+                        <a class="btn btn-blue pull-right" href="#" > <span>New Post</span> </a>
+                     
+                    </div> -->
+                    <table id="post-tbl" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Title</th>
+                <th>Created date</th>
+                <th>Status</th>
+                <th style="text-align: center;">Option</th>               
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          
+        </div>
+      </div>
+        
+      </div>
+    
+    <!-- END MAIN CONTENT --> 
+    @stop

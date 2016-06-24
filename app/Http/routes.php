@@ -28,15 +28,15 @@ Route::group(['middleware' => ['auth']], function()
 	//Route::get('posts', 'PostController@index');
 	Route::get('posts',['as' => 'home', 'uses' => 'PostController@index']);
 	// show new post form
-	Route::get('posts/new-post', 'PostController@create');
+	Route::get('posts/new-post', ['as' => 'new-post', 'uses' => 'PostController@create']);
 	// save new post
 	Route::post('posts/store', 'PostController@store');
 	// edit post form
-	Route::get('posts/edit/{slug}', 'PostController@edit');
+	Route::get('posts/edit/{slug}', ['as' => 'edit-post', 'uses' => 'PostController@edit']);
 	// update post
 	Route::post('posts/update', 'PostController@update');
 	// delete post
-	Route::get('posts/delete/{id}', 'PostController@delete');
+	Route::get('posts/delete/{id}', ['as' => 'delete-post', 'uses' => 'PostController@delete']);
 	// display user's all posts
 	Route::get('my-all-posts','UserController@user_posts_all');
 	// display user's drafts

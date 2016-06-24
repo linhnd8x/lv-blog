@@ -9,16 +9,38 @@ use DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostFormRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Carbon;
 class PostController extends Controller
 {
 	public function index()
 	{
 		 //fetch 5 posts from database which are active and latest
-        $posts = Post::where('active',1)->orderBy('created_at','desc')->paginate(5);
+       $postData = Post::where('active',1)->orderBy('created_at','desc')->get();
+        $postArr = array ();
+        if ($postData) {
+          foreach ($postData as $key => $post) {
+            $editLink = route('edit-post', ['slug' => $post->slug]);
+            
+            $deleteLink = route('delete-post', ['id' => $post->id]);
+            
+            $statusLink = $post->active;
+            $postArr[] = array (
+                'no' => ($key + 1),
+                'title' => ($post->title),
+                'created_at' => $post->created_at->format('m/d/Y'),
+                'content' => ($post->content),
+                'status' => ($post->active == 1) ? "<a href='{$statusLink}'>Active</a>" : "<a href='{$statusLink}'>De-Active</a>",
+                'option' => "<a href='{$editLink}'>Edit</a> | <a class='delete_link' href='{$deleteLink}'>Delete</a>" 
+            );
+          }
+        }
+        $posts = json_encode($postArr);
         //page heading
-        $title = 'Latest Posts';
+        $title = 'Posts Management';
+
+        $addurl = route('new-post');
         //return home.blade.php template from resources/views folder
-        return view('posts.home')->withPosts($posts)->withTitle($title);
+        return view('posts.home')->withPosts($posts)->withTitle($title)->withAddurl($addurl);
 	}
     public function create(Request $request)
 	{
@@ -69,6 +91,7 @@ class PostController extends Controller
   {
     $category = Category::select('id', 'category')->distinct()->get();
     $post = Post::where('slug',$slug)->first();
+
     if($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
       return view('posts.edit', ['post' => $post], ['category' => $category]);
     return redirect('/')->withErrors('you have not sufficient permissions');
