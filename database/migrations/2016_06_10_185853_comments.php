@@ -25,6 +25,7 @@ class Comments extends Migration
                     ->references('id')->on('users')
                     ->onDelete('cascade');
             $table->text('body');
+             $table->boolean('del_flg')->default(0);
             $table->timestamps();
         });
     }

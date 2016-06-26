@@ -7,6 +7,7 @@
 <meta name="description" content="Xenon Boostrap Admin Panel" />
 <meta name="author" content="" />
 <title>Posts management</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic"> -->
 <link rel="stylesheet" href="{{ asset('/css/fonts/fontawesome/css/font-awesome.min.css') }}">
 
@@ -17,6 +18,7 @@
 <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
 
 
+<!-- <script src="{{ asset('/js/jquery.min-2.1.3.js') }}"></script> -->
 <script src="{{ asset('/js/jquery-1.11.1.min.js') }}"></script>
 <!-- Imported styles on this page -->
 
@@ -25,8 +27,6 @@
 <script src="{{ asset('/js/resizeable.js') }}"></script>
 <script src="{{ asset('/js/joinable.js') }}"></script>
 <script src="{{ asset('/js/fw-toggles.js') }}"></script>
-
-
 
 <!-- JavaScripts initializations and stuff -->
 <script src="{{ asset('/js/datatables/js/jquery.dataTables.min.js') }}"></script>
@@ -70,10 +70,10 @@
       <ul id="main-menu" class="main-menu">
         <!-- add class "multiple-expanded" to allow multiple submenus to open --> 
         <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-        <li class="active opened active"><a href="dashboard.html"><i class="fa fa-dashboard"></i> <span class="title">Posts</span> </a> </li>
-        <li> <a href="manager_request.html"><i class="fa fa-newspaper-o"></i> <span class="title">Categories</span> </a> </li>
-        <li> <a href="manager_workers.html"><i class="fa fa-female mgr0"></i><i class="fa fa-male"></i> <span class="title">Tags</span> </a> </li>
-        <li> <a href="manager_client_places.html"><i class="fa fa-car"></i> <span class="title">Users</span> </a> </li>     
+        <li class="active opened active"><a href="{{ url('posts/') }}"><i class="fa fa-dashboard"></i> <span class="title">Posts</span> </a> </li>
+        <li> <a href="{{ url('category/') }}"><i class="fa fa-newspaper-o"></i> <span class="title">Categories</span> </a> </li>
+        <li> <a href="{{ url('tags/') }}"><i class="fa fa-female mgr0"></i><i class="fa fa-male"></i> <span class="title">Tags</span> </a> </li>
+        <li> <a href="{{ url('users/') }}"><i class="fa fa-car"></i> <span class="title">Users</span> </a> </li>     
       </ul>
     </div>
   </div>
@@ -95,10 +95,10 @@
         </li>
         <li class="dropdown user-profile"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ asset('/images/user-4.png') }}" alt="user-image" class="img-circle img-inline userpic-32" width="28" /> <span> John Smith <i class="fa-angle-down"></i> </span> </a>
           <ul class="dropdown-menu user-profile-menu list-unstyled">
-            <li> <a href="manager_add_post"> <i class="fa-edit"></i> New Post </a></li>
-            <li> <a href="manager_edit"> <i class="fa-wrench"></i> New Category </a></li>
-            <li> <a href="manager_profile"> <i class="fa-user"></i> New Tag </a></li>
-            <li class="last"> <a href="logout.html"> <i class="fa-lock"></i> Logout </a></li>
+            <li> <a href="{{ url('post/new-post') }}"> <i class="fa-edit"></i> New Post </a></li>
+            <li> <a href="{{ url('category/new-category') }}"> <i class="fa-wrench"></i> New Category </a></li>
+            <li> <a href="{{ url('tags/new-tags') }}"> <i class="fa-user"></i> New Tag </a></li>
+            <li class="last"> <a href="{{ url('auth/login') }}"> <i class="fa-lock"></i> Logout </a></li>
           </ul>
         </li>
         <li style="display:none"> <a href="#" data-toggle="chat"> <i class="fa-comments-o"></i> </a> </li>

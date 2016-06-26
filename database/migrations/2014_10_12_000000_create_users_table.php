@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->enum('role',['admin','author','subscriber'])->default('author');
             $table->string('email')->unique();
             $table->string('password');
+            $table->boolean('del_flg')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

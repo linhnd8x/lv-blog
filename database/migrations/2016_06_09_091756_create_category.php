@@ -15,6 +15,7 @@ class CreateCategory extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('category')->unique();
+            $table->boolean('del_flg')->default(0);
             $table->timestamps();
         });
 

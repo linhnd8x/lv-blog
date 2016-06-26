@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']], function()
 	Route::get('posts/edit/{slug}', ['as' => 'edit-post', 'uses' => 'PostController@edit']);
 	// update post
 	Route::post('posts/update', 'PostController@update');
+	// update post status
+	Route::put('posts/active', ['as' => 'active-post', 'uses' => 'PostController@active']);
 	// delete post
 	Route::get('posts/delete/{id}', ['as' => 'delete-post', 'uses' => 'PostController@delete']);
 

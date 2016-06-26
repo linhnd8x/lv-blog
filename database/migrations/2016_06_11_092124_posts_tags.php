@@ -22,6 +22,7 @@ class PostsTags extends Migration
             $table->foreign('tag_id')
                     ->references('id')->on('tags')
                     ->onDelete('cascade');
+            $table->boolean('del_flg')->default(0);
             $table->timestamps();
         });
     }

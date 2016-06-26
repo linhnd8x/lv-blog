@@ -5,11 +5,9 @@ Add New Post
 @endsection
 
 @section('content')
-<script type="text/javascript" src="{{ asset('/js/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
 
 <!-- TinyMCE 4.x -->
-<script type="text/javascript" src="/tinymce_4.x/tinymce/js/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
 tinymce.init({
   selector: "textarea",
@@ -57,7 +55,7 @@ tinymce.init({
         <div class="col-sm-6">
             <label class="col-sm-3" for="category">Category:</label>
             <div class="col-sm-9">
-                <select class="form-control" id="category_type" required="required" name="category">
+                <select class="form-control" id="category_type" required="required" name="category" >
                     @foreach($category as $cat)
                         <option value="{{$cat->id}}">{{$cat->category}}</option>
                     @endforeach
@@ -68,7 +66,7 @@ tinymce.init({
             <label class="col-sm-3 control-label">Publish Date:</label>
             <div class="col-sm-9">
                 <div class="input-group">
-                    <input name="publish" type="text" class="form-control datepicker" data-format="D, dd MM yyyy">
+                    <input name="published_at" class="form-control datepicker" data-format="yyyy/mm/dd" />
                 </div>
             </div>
         </div>   
@@ -76,19 +74,21 @@ tinymce.init({
     </div>
     <div class="row">
         <div class="form-group col-sm-6">
-        <label class="col-sm-3" for="tags">Tags:</label>
-        <div class="col-sm-9">
-            <input id="tags" name='tags' class="form-control" data-role="tagsinput" />
+            <label class="col-sm-3" for="tags">Tags:</label>
+            <div class="col-sm-9">
+                <input id="tags" name='tags' class="form-control" data-role="tagsinput" />
+            </div>
         </div>
-    </div>
     </div>
     
 
     <div class="form-group">
         <input type="submit" name='publish' class="btn btn-success" value = "Publish"/>
-        <input type="submit" name='save' class="btn btn-default" value = "Save Draft" />
+        <input type="submit" name='save' class="btn btn-default" value = "Save As Draft" />
+        <a href="{{  url('posts/') }}" class="btn btn-default">Back</a>
     </div>
 </form>
+
 <script src="{{ asset('/js/selectboxit/jquery.selectBoxIt.min.js') }}"></script>
 <script src="{{ asset('/js/tagsinput/bootstrap-tagsinput.js') }}"></script>
 <script src="{{ asset('/js/datepicker/bootstrap-datepicker.js') }}"></script>
@@ -98,7 +98,6 @@ jQuery(document).ready(function($)
     $("#category_type").selectBoxIt().on('open', function(){
         $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
     });
-    // $('.datepicker').datepicker();
-    });
+});
 </script>
 @endsection

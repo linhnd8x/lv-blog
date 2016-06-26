@@ -27,6 +27,7 @@ class CreatePostsTable extends Migration
                     ->references('id')->on('categories')
                     ->onDelete('cascade');
             $table->boolean('active')->default(1);
+            $table->boolean('del_flg')->default(0);
             $table->timestamps();
             $table->timestamp('published_at')->index();
         });
