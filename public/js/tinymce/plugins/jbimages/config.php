@@ -37,8 +37,12 @@
 | 
 | -------------------------------------------------------------------*/
 
-	
-	$config['img_path'] = '/images'; // Relative to domain name
+	$folder = date("Ymd");
+	$config['img_path'] = '/images/blog/'.$folder; // Relative to domain name
+	if (!is_dir( $_SERVER['DOCUMENT_ROOT'] . $config['img_path'])) {
+    	mkdir($_SERVER['DOCUMENT_ROOT'] . $config['img_path'], 0777, true);
+	}
+
 	$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'] . $config['img_path']; // Physical path. [Usually works fine like this]
 
 

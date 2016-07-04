@@ -3291,20 +3291,20 @@ textarea:focus {
 .page-header {
 	background: blue;
 }
-.post-meta ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
+.post-meta {
+    padding: 10px 0;
 }
 
-.post-meta li {
-    float: left;
-    padding: 14px 4px;
+.meta {
+    margin-left: 10px
+    
 }
 .sumary-text {
 	padding-top: 10px
 }
 .read-me {
 	margin: 0 !important;
+}
+.main-content {
+	border: 1px solid #ddd
 }

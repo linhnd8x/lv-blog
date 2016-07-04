@@ -96,8 +96,12 @@ class Uploader extends CI_Controller {
 			// Add our stuff
 			$result['result']		= "file_uploaded";
 			$result['resultcode']	= 'ok';
+			$ext = explode('.', $result['file_name']);
 			$result['file_name']	= $conf['img_path'] . '/' . $result['file_name'];
+
+			rename ($_SERVER['DOCUMENT_ROOT'] . $result['file_name'], $_SERVER['DOCUMENT_ROOT'] . $conf['img_path'] . '/' . date("YmdHis") . '.' . $ext[1]);
 			
+			$result['file_name'] = $conf['img_path'] . '/' . date("YmdHis") . '.' . $ext[1];
 			// Output to user
 			$this->load->view('ajax_upload_result', $result);
 		}

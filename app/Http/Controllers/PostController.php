@@ -47,8 +47,8 @@ class PostController extends Controller
     {
         // if user can post i.e. user is admin or author
         if($request->user()->is_admin()) {
-            $category = Category::select('id', 'category')->distinct()->get();
-             return view('posts.create', ['category' => $category]);
+            $category = Category::select('id', 'category')->distinct()->where('del_flg', 0)->get();
+            return view('posts.create', ['category' => $category]);
         } else {
             return redirect('/')->withErrors('You have not sufficient permissions for writing post');
         }
@@ -146,7 +146,7 @@ class PostController extends Controller
     }
     public function edit(Request $request,$slug)
     {
-        $category = Category::select('id', 'category')->distinct()->get();
+        $category = Category::select('id', 'category')->distinct()->where('del_flg', 0)->get();
         $post = Post::where('slug',$slug)->first();
         $postTags = PostTag::join('tags', 'tags.id', '=', 'blog_post_tags.tag_id')->where('post_id', $post->id)->get();
         $tags = '';

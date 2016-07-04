@@ -63,22 +63,20 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-sm-9 offset-sm-2">
+            <div class="col-sm-9 offset-sm-2 main-content">
                 <div class="blog-post-area">
                     @if ($posts)
                     @foreach ($posts as $post)
                     <div class="single-blog-post">
                         <h3>{{$post->title}}</h3>
                         <div class="post-meta">
-                            <ul>
-                                <li><i class="fa fa-user"></i> Admin</li>
-                                <li><i class="fa fa-calendar"></i> {{date('d M, Y', strtotime($post->created_at))}}</li>
-                                <li><i class="fa fa-clock-o"></i> {{$post->category}}</li>
-                            </ul>
+                            <span class='meta'><i class="fa fa-user"></i> Admin</span>
+                            <span class='meta'><i class="fa fa-calendar"></i> {{date('d M, Y', strtotime($post->created_at))}}</span>
+                            <span class='meta'><i class="fa fa-clock-o"></i> {{$post->category}}</span>
                         </div>
                         <a href="">
                             <!-- <img src="images/blog/{{$post->image}}" alt=""> -->
-                            <img src="/images/luffy.jpg" alt="blog_image" class="img-responsive">
+                            <img src="/images/luffy.jpg" alt="blog_image" class="img-responsive" max-width="700">
                         </a>
                         <p class="sumary-text">{{str_limit($post->content, 200)}}</p>
                         <div class="row read-me">
@@ -97,7 +95,7 @@
             </div>
 			<div class="col-sm-3">
 				<div class="list-group">
-					<a href="#" class="list-group-item">CATEGORIES</a>
+					<p class="list-group-item">CATEGORIES</p>
 						@if ($categories)
 	                    @foreach ($categories as $category)
 	                    	<a href="#" class="list-group-item"> <span class="badge badge-info">{!! $category->postItems !!}</span>{!!$category->category!!}</a> 
