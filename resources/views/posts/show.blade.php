@@ -1,6 +1,6 @@
-@extends('layouts.app')
 
-@section('title')
+
+
 	@if($post)
 		{{ $post->title }}
 		@if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
@@ -9,13 +9,13 @@
 	@else
 		Page does not exist
 	@endif
-@endsection
 
-@section('title-meta')
+
+
 <p>{{ $post->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a></p>
-@endsection
 
-@section('content')
+
+
 
 @if($post)
 	<div>
@@ -51,7 +51,7 @@
 							<p>{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</p>
 						</div>
 						<div class="list-group-item">
-							<p>{{ $comment->body }}</p>
+							{!! $comment->body !!}
 						</div>
 					</div>
 				</li>
@@ -63,4 +63,5 @@
 404 error
 @endif
 
-@endsection
+
+

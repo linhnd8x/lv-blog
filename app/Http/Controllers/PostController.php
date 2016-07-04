@@ -126,6 +126,24 @@ class PostController extends Controller
         $comments = $post->comments;
         return view('posts.show')->withPost($post)->withComments($comments);
     }
+    public function posts_list()
+    {
+        $posts = Post::select(DB::raw('posts.*, categories.category'))
+                        ->join('categories', 'categories.id', '=', 'posts.category_id')
+                        ->where('posts.del_flg',0)->orderBy('id','desc')->paginate(3);
+        if(! $posts) {
+            return redirect('/')->withErrors('requested page not found');
+        }
+        $categories = Category::select(DB::raw('categories.*, count(posts.category_id) as postItems'))
+                                ->join('posts', 'posts.category_id', '=', 'categories.id')
+                                ->groupby('posts.category_id')
+                                ->having('categories.del_flg', '=', 0)
+                                ->get();
+        $tags = Tag::where('del_flg', 0)->get();
+        //$comments = $post->comments;
+        //return view('posts.list')->withPost($post)->withComments($comments);
+        return view('posts.list')->withPosts($posts)->withCategories($categories)->withTags($tags);
+    }
     public function edit(Request $request,$slug)
     {
         $category = Category::select('id', 'category')->distinct()->get();

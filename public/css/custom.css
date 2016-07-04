@@ -2910,10 +2910,6 @@ nav.nav-main ul.user-profile-menu > li:last-child{
 	border-radius:50%;
 }
 
-.list-group .badge{
-    top: 15px !important;
-}
-
 .nav-main .list-group .list-group-item{
 	border:none;
 	border-bottom:1px solid #e9e9e9;
@@ -3289,4 +3285,26 @@ textarea:focus {
 	input:focus {
 		font-size: 16px;
 	}
+}
+
+
+.page-header {
+	background: blue;
+}
+.post-meta ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.post-meta li {
+    float: left;
+    padding: 14px 4px;
+}
+.sumary-text {
+	padding-top: 10px
+}
+.read-me {
+	margin: 0 !important;
 }

@@ -31,6 +31,7 @@
 <!-- JavaScripts initializations and stuff -->
 <script src="{{ asset('/js/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/js/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('/js/fw-custom.js') }}"></script>
 
 <!-- select2 -->
 
@@ -38,7 +39,7 @@
 <script src="{{ asset('/js/datatables/dataTables.bootstrap.js') }}"></script>
 <script src="{{ asset('/js/datatables/tabletools/dataTables.tableTools.min.js') }}"></script>
 <script src="{{ asset('/js/jquery-validate/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('/js/fw-custom.js') }}"></script>
+
 <!-- <script src="js/master.js"></script> -->
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -72,8 +73,8 @@
         <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
         <li class="active opened active"><a href="{{ url('posts/') }}"><i class="fa fa-dashboard"></i> <span class="title">Posts</span> </a> </li>
         <li> <a href="{{ url('category/') }}"><i class="fa fa-newspaper-o"></i> <span class="title">Categories</span> </a> </li>
-        <li> <a href="{{ url('tags/') }}"><i class="fa fa-female mgr0"></i><i class="fa fa-male"></i> <span class="title">Tags</span> </a> </li>
-        <li> <a href="{{ url('users/') }}"><i class="fa fa-car"></i> <span class="title">Users</span> </a> </li>     
+        <li> <a href="{{ url('tag/') }}"><i class="fa fa-female mgr0"></i><i class="fa fa-male"></i> <span class="title">Tags</span> </a> </li>
+        <li> <a href="{{ url('user/') }}"><i class="fa fa-car"></i> <span class="title">Users</span> </a> </li>     
       </ul>
     </div>
   </div>
@@ -93,35 +94,34 @@
             <button type="submit" class="btn btn-link"> <i class="linecons-search"></i> </button>
           </form>
         </li>
-        <li class="dropdown user-profile"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ asset('/images/user-4.png') }}" alt="user-image" class="img-circle img-inline userpic-32" width="28" /> <span> John Smith <i class="fa-angle-down"></i> </span> </a>
+        <li class="dropdown user-profile"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ asset('/images/user-4.png') }}" alt="user-image" class="img-circle img-inline userpic-32" width="28" /> <span> Admin <i class="fa-angle-down"></i> </span> </a>
           <ul class="dropdown-menu user-profile-menu list-unstyled">
-            <li> <a href="{{ url('post/new-post') }}"> <i class="fa-edit"></i> New Post </a></li>
+            <li> <a href="{{ url('posts/new-post') }}"> <i class="fa-edit"></i> New Post </a></li>
             <li> <a href="{{ url('category/new-category') }}"> <i class="fa-wrench"></i> New Category </a></li>
-            <li> <a href="{{ url('tags/new-tags') }}"> <i class="fa-user"></i> New Tag </a></li>
-            <li class="last"> <a href="{{ url('auth/login') }}"> <i class="fa-lock"></i> Logout </a></li>
+            <li> <a href="{{ url('tag/new-tag') }}"> <i class="fa-user"></i> New Tag </a></li>
+            <li class="last"> <a href="{{ url('auth/logout') }}"> <i class="fa-lock"></i> Logout </a></li>
           </ul>
         </li>
         <li style="display:none"> <a href="#" data-toggle="chat"> <i class="fa-comments-o"></i> </a> </li>
       </ul>
     </nav>
 
+  @yield('content')	
 
-@yield('content')	
-</div>
-    <!-- Main Footer --> 
-    <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" --> 
-    <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) --> 
-    <!-- Or class "fixed" to  always fix the footer to the end of page -->
-    <footer class="main-footer">
-      <div class="footer-inner"> 
-        
-        <!-- Add your copyright text here -->
-        <div class="footer-text"> &copy; 2016 <strong></strong> theme by Edo Nguyen</div>
-        
-        <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
-        <div class="go-up"> <a href="#" rel="go-top"> <i class="fa-angle-up"></i> </a> </div>
-      </div>
-    </footer>
+  <!-- Main Footer --> 
+  <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" --> 
+  <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) --> 
+  <!-- Or class "fixed" to  always fix the footer to the end of page -->
+  <footer class="main-footer">
+    <div class="footer-inner"> 
+      
+      <!-- Add your copyright text here -->
+      <div class="footer-text"> &copy; 2016 <strong></strong> theme by Edo Nguyen</div>
+      
+      <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+      <div class="go-up"> <a href="#" rel="go-top"> <i class="fa-angle-up"></i> </a> </div>
+    </div>
+  </footer>
   </div>
 </div>
 </div>
