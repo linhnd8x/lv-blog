@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Post;
 use App\Tag;
+use App\PostTag;
+use App\Category;
+use DB;
 
 use Carbon\Carbon;
 
@@ -76,6 +80,7 @@ class TagController extends Controller
                     'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
                 );
         $tagIns['tag'] = $request->get('tag');
+        $tagIns['slug'] = str_slug( $tagIns['tag']);
         if($request->has('save')) {
             $tag->insert($tagIns);
             $message = 'tag add successfully';
@@ -89,9 +94,28 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+
+        $posts = Post::select(DB::raw('posts.*, tags.*'))
+                        ->join('blog_post_tags', 'blog_post_tags.post_id', '=', 'posts.id')
+                        ->join('tags', 'tags.id', '=', 'blog_post_tags.tag_id')
+                        ->where('posts.del_flg',0)
+                        ->where('tags.slug',$slug)
+                        ->orderBy('posts.id','desc')->paginate(3);
+        if(! $posts) {
+            return redirect('/')->withErrors('requested page not found');
+        }
+        $categories = Category::select(DB::raw('categories.*, count(posts.category_id) as postItems'))
+                                ->join('posts', 'posts.category_id', '=', 'categories.id')
+                                ->groupby('posts.category_id')
+                                ->having('categories.del_flg', '=', 0)
+                                ->get();
+        $tags = Tag::where('del_flg', 0)->get();
+        //$comments = $post->comments;
+        //return view('posts.list')->withPost($post)->withComments($comments);
+        return view('posts.list')->withPosts($posts)->withCategories($categories)->withTags($tags);
+    
     }
 
     /**
@@ -124,6 +148,8 @@ class TagController extends Controller
         if($tag && $request->user()->is_admin()) {
             $tag->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
             $tag->tag = $request->get('tag');
+            $tag->slug = str_slug($request->get('tag'));
+
 
             if($request->has('save')) {
                 $tag->update();

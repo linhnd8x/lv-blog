@@ -1,24 +1,17 @@
 
-
-
-	@if($post)
-		{{ $post->title }}
-		@if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
-			<button class="btn" style="float: right"><a href="{{ url('posts/edit/'.$post->slug)}}">Edit Post</a></button>
-		@endif
-	@else
-		Page does not exist
-	@endif
-
-
-
-<p>{{ $post->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a></p>
-
-
-
-
 @if($post)
-	<div>
+	<div class="container">
+	    <h1>{{ $post->title }}</h1>
+	    <h5>{{ $post->published_at->format('M jS Y g:ia') }}</h5>
+	    <hr>
+	    <div class="sumary-text">
+			{!! $post->content !!}
+		</div>	
+	    <hr>
+	    <button class="btn btn-primary" onclick="history.go(-1)">Back</button>
+ 	</div>
+
+	<!-- <div class="sumary-text">
 		{!! $post->content !!}
 	</div>	
 	<div>
@@ -58,7 +51,7 @@
 			@endforeach
 		</ul>
 		@endif
-	</div>
+	</div> -->
 @else
 404 error
 @endif

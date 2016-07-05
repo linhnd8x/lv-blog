@@ -211,13 +211,18 @@ class PostController extends Controller
         $tagArr = explode(',', $request->get('tags'));
 
         foreach ($tagArr as $val) {
-            $exist = Tag::where('tag',$val)->first();
-            if (! $exist) {
+            $exist = Tag::where('slug',str_slug($val))->first();
+            if (! $exist) {              
                 $tagsIns['tag'] = $val;
+                $tagsIns['slug'] = str_slug($val);
                 $tagId[] =  $tags->insertGetId($tagsIns);
+            } else {
+                 $postTagExist = PostTag::where('post_id', $post_id)-> where('tag_id', $exist->id)->first();
+                 if (! $postTagExist) {
+                        $tagId[] = $exist->id;
+                 }
             }
         }
-
         foreach ($tagId as $id) {
             $postTagsIns['post_id'] = $post_id;
             $postTagsIns['tag_id'] = $id;

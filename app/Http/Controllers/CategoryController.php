@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Category;
+use App\Post;
+use App\Tag;
+use DB;
 
 use Carbon\Carbon;
 
@@ -76,6 +79,7 @@ class CategoryController extends Controller
                     'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
                 );
         $categoryIns['category'] = $request->get('category');
+        $categoryIns['slug'] = str_slug( $categoryIns['category']);
         if($request->has('save')) {
             $category->insert($categoryIns);
             $message = 'Category add successfully';
@@ -89,9 +93,27 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+
+        $posts = Post::select(DB::raw('posts.*, categories.category'))
+                        ->join('categories', 'categories.id', '=', 'posts.category_id')
+                        ->where('posts.del_flg',0)
+                        ->where('categories.slug',$slug)
+                        ->orderBy('id','desc')->paginate(3);
+        if(! $posts) {
+            return redirect('/')->withErrors('requested page not found');
+        }
+        $categories = Category::select(DB::raw('categories.*, count(posts.category_id) as postItems'))
+                                ->join('posts', 'posts.category_id', '=', 'categories.id')
+                                ->groupby('posts.category_id')
+                                ->having('categories.del_flg', '=', 0)
+                                ->get();
+        $tags = Tag::where('del_flg', 0)->get();
+        //$comments = $post->comments;
+        //return view('posts.list')->withPost($post)->withComments($comments);
+        return view('posts.list')->withPosts($posts)->withCategories($categories)->withTags($tags);
+    
     }
 
     /**
@@ -124,6 +146,7 @@ class CategoryController extends Controller
         if($category && $request->user()->is_admin()) {
             $category->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
             $category->category = $request->get('category');
+            $category->slug = str_slug($request->get('category'));
 
             if($request->has('save')) {
                 $category->update();

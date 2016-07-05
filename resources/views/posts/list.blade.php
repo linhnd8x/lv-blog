@@ -74,13 +74,13 @@
                             <span class='meta'><i class="fa fa-calendar"></i> {{date('d M, Y', strtotime($post->created_at))}}</span>
                             <span class='meta'><i class="fa fa-clock-o"></i> {{$post->category}}</span>
                         </div>
-                        <a href="">
+                        <!-- <a href=""> -->
                             <!-- <img src="images/blog/{{$post->image}}" alt=""> -->
-                            <img src="/images/luffy.jpg" alt="blog_image" class="img-responsive" max-width="700">
-                        </a>
-                        <p class="sumary-text">{{str_limit($post->content, 200)}}</p>
+                            <!-- <img src="/images/luffy.jpg" alt="blog_image" class="img-responsive" max-width="700"> -->
+                        <!-- </a> -->
+                        <div class="sumary-text">{!! str_limit($post->content, 300) !!}</div>
                         <div class="row read-me">
-                        	<a class="btn btn-primary pull-right" href="{{url('blog/'.$post->slug)}}">Read More</a>
+                        	<a class="btn btn-primary pull-right" href="{{url('posts/'.$post->slug)}}">Read More</a>
                         </div>
                         
                     </div>
@@ -98,7 +98,7 @@
 					<p class="list-group-item">CATEGORIES</p>
 						@if ($categories)
 	                    @foreach ($categories as $category)
-	                    	<a href="#" class="list-group-item"> <span class="badge badge-info">{!! $category->postItems !!}</span>{!!$category->category!!}</a> 
+	                    	<a href="{{url('category/'.$category->slug)}}" class="list-group-item"> <span class="badge badge-info">{!! $category->postItems !!}</span>{!!$category->category!!}</a> 
 	                    @endforeach
                    	 	@endif
 					<a href="#" class="list-group-item"> <span class="badge badge-info">14</span>Sent mail</a> 
@@ -113,7 +113,7 @@
 			   <div class="bs-example">
 			   		@if ($tags)
 	                    @foreach ($tags as $tag)
-	                    	<a href="#" class="label label-default">{!! $tag->tag !!}</a> 
+	                    	<a href="{{url('tag/'.$tag->slug)}}" class="label label-default">{!! $tag->tag !!}</a> 
 	                    @endforeach
                    	 	@endif
 			      <div class="label label-default">Default</div>

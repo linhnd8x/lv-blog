@@ -14,17 +14,20 @@ class CreateTag extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tag')->unique();
+            $table->string('tag');
+            $table->string('slug')->unique();
             $table->boolean('del_flg')->default(0);
             $table->timestamps();
         });
 
         DB::table('tags')->insert([
-            'tag' => "Pink"
+            'tag' => "Pink",
+            'slug' => "pink"
             ]);
 
         DB::table('tags')->insert([
-            'tag' => "T-Shirt"
+            'tag' => "T-Shirt",
+            'slug' => "t-shirt"
             ]);
     }
 

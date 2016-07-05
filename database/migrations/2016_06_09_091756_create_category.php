@@ -14,21 +14,25 @@ class CreateCategory extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('category')->unique();
+            $table->string('category');
+            $table->string('slug')->unique();
             $table->boolean('del_flg')->default(0);
             $table->timestamps();
         });
 
         DB::table('categories')->insert([
-            'category' => "WOMEN"
+            'category' => "WOMEN",
+            'slug' => "women"
         ]);
 
         DB::table('categories')->insert([
-            'category' => "MEN"
+            'category' => "MEN",
+            'slug' => "men"
         ]);
 
         DB::table('categories')->insert([
-            'category' => "KIDS"
+            'category' => "KIDS",
+            'slug' => "kids"
         ]);
     }
 
