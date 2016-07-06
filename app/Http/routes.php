@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-// Route::get('blog', 'BlogController@index');
-Route::get('blog/{slug}', 'BlogController@showPost');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/',['as' => 'homepage', 'uses' => 'PostController@fe_index']);
+
 
 // Authentication
 Route::controllers([
@@ -99,7 +99,7 @@ Route::get('user/{id}/posts','UserController@user_posts')->where('id', '[0-9]+')
 // display single post
 Route::get('posts/{slug}',['as' => 'post', 'uses' => 'PostController@show'])->where('slug', '[A-Za-z0-9-_]+');
 // display list post
-Route::get('blog',['as' => 'posts_list', 'uses' => 'PostController@posts_list']);
+Route::get('blog',['as' => 'blog', 'uses' => 'PostController@posts_list']);
 // display list post
 Route::get('category/{slug}',['as' => 'category_show', 'uses' => 'CategoryController@show']);// display list post
 Route::get('tag/{slug}',['as' => 'tag_show', 'uses' => 'TagController@show']);

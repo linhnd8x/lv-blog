@@ -14,6 +14,24 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 class PostController extends Controller
 {
+    public function fe_index()
+    {
+        $posts = Post::select(DB::raw('posts.*, categories.category'))
+                        ->join('categories', 'categories.id', '=', 'posts.category_id')
+                        ->where('posts.del_flg',0)->orderBy('posts.created_at','desc')->paginate(10);
+        if(! $posts) {
+            return redirect('/')->withErrors('requested page not found');
+        }
+        $categories = Category::select(DB::raw('categories.*, count(posts.category_id) as postItems'))
+                                ->join('posts', 'posts.category_id', '=', 'categories.id')
+                                ->groupby('posts.category_id')
+                                ->having('categories.del_flg', '=', 0)
+                                ->get();
+        $tags = Tag::where('del_flg', 0)->get();
+        //$comments = $post->comments;
+        //return view('posts.list')->withPost($post)->withComments($comments);
+        return view('page.home')->withPosts($posts)->withCategories($categories)->withTags($tags);
+    }
 	public function index()
 	{
         $postData = Post::where('del_flg',0)->orderBy('id','desc')->get();
@@ -81,6 +99,7 @@ class PostController extends Controller
         $postIns['category_id'] = $request->get('category');
         $postIns['title'] = $request->get('title');
         $postIns['content'] = $request->get('content');
+        $postIns['image'] = $request->get('image');
         $postIns['slug'] = str_slug($postIns['title']);
         $postIns['published_at'] = $request->get('published_at');
         $postIns['author_id'] = $request->user()->id;
@@ -98,9 +117,10 @@ class PostController extends Controller
         if (! $existPost) {
             $tagArr = explode(',', $request->get('tags'));
             foreach ($tagArr as $val) {
-                $exist = Tag::where('tag',$val)->first();
+                $exist = Tag::where('slug',str_slug($val))->first();
                 if (! $exist) {
                     $tagsIns['tag'] = $val;
+                    $tagsIns['slug'] = str_slug($val);
                     $tagId[] =  $tags->insertGetId($tagsIns);
                 }
             }
@@ -119,12 +139,16 @@ class PostController extends Controller
     }
     public function show($slug)
     {
-        $post = Post::where('slug',$slug)->first();
+        // $post = Post::where('slug',$slug)->first();
+        $post = Post::select(DB::raw('posts.*, categories.category'))
+                        ->join('categories', 'categories.id', '=', 'posts.category_id')
+                        ->where('posts.slug',$slug)->first();
         if(! $post) {
             return redirect('/')->withErrors('requested page not found');
         }
+        $tags = PostTag::join('tags', 'tags.id', '=', 'blog_post_tags.tag_id')->where('post_id', $post->id)->get();
         $comments = $post->comments;
-        return view('posts.show')->withPost($post)->withComments($comments);
+        return view('posts.show')->withPost($post)->withComments($comments)->withTags($tags);
     }
     public function posts_list()
     {
@@ -143,6 +167,7 @@ class PostController extends Controller
         //$comments = $post->comments;
         //return view('posts.list')->withPost($post)->withComments($comments);
         return view('posts.list')->withPosts($posts)->withCategories($categories)->withTags($tags);
+        // return view('page.blog')->withPosts($posts)->withCategories($categories)->withTags($tags);
     }
     public function edit(Request $request,$slug)
     {
@@ -194,6 +219,7 @@ class PostController extends Controller
         $post->category_id = $category_id;
         $post->title = $title;
         $post->content = $request->input('content');
+        $post->image = $request->get('image');
         $post->published_at = Carbon::createFromFormat('Y/m/d H', $request->get('published_at') . '9');
         $post->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
         if($request->has('save'))

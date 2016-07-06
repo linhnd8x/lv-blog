@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Xenon Boostrap Admin Panel" />
 <meta name="author" content="" />
-<title>Posts management</title>
+<title>Blog Management</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic"> -->
 <link rel="stylesheet" href="{{ asset('/css/fonts/fontawesome/css/font-awesome.min.css') }}">
@@ -63,18 +63,19 @@
         <!-- <div class="logo"> <a href="dashboard-1.html" class="logo-expanded"> <img src="images/logo@2x.png" class="img-responsive" alt="" /> </a> <a href="dashboard-1.html" class="logo-collapsed"> <img src="images/logo-collapsed@2x.png" width="40" alt="" /> </a> </div> -->
         
         <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
-      <!--   <div class="mobile-menu-toggle visible-xs"> <a href="#" data-toggle="user-info-menu"> <i class="fa-bell-o"></i> <span class="badge badge-success">7</span> </a> <a href="#" data-toggle="mobile-menu"> <i class="fa-bars"></i> </a> </div> -->
+       <!--  <div class="mobile-menu-toggle visible-xs"> <a href="#" data-toggle="user-info-menu"> <i class="fa-bell-o"></i> <span class="badge badge-success">7</span> </a> <a href="#" data-toggle="mobile-menu"> <i class="fa-bars"></i> </a> </div> -->
+        <div class="mobile-menu-toggle visible-xs"> <a href="#" data-toggle="mobile-menu"> <i class="fa-bars"></i> </a> </div>
         
         <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
-        <!-- <div class="settings-icon" style="display:none"> <a href="#" data-toggle="settings-pane" data-animate="true"> <i class="linecons-cog"></i> </a> </div> -->
+        <div class="settings-icon" style="display:none"> <a href="#" data-toggle="settings-pane" data-animate="true"> <i class="linecons-cog"></i> </a> </div>
       </header>
       <ul id="main-menu" class="main-menu">
         <!-- add class "multiple-expanded" to allow multiple submenus to open --> 
         <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-        <li class="active opened active"><a href="{{ url('posts/') }}"><i class="fa fa-dashboard"></i> <span class="title">Posts</span> </a> </li>
-        <li> <a href="{{ url('category/') }}"><i class="fa fa-newspaper-o"></i> <span class="title">Categories</span> </a> </li>
-        <li> <a href="{{ url('tag/') }}"><i class="fa fa-female mgr0"></i><i class="fa fa-male"></i> <span class="title">Tags</span> </a> </li>
-        <li> <a href="{{ url('user/') }}"><i class="fa fa-car"></i> <span class="title">Users</span> </a> </li>     
+        <li><a href="{{ url('posts/') }}"><i class="fa fa-newspaper-o"></i> <span class="title">Posts</span> </a> </li>
+        <li> <a href="{{ url('category/') }}"><i class="fa fa-folder-o"></i> <span class="title">Categories</span> </a> </li>
+        <li> <a href="{{ url('tag/') }}"><i class="fa fa-tags"></i> <span class="title">Tags</span> </a> </li>
+        <li> <a href="{{ url('user/') }}"><i class="fa fa-user"></i> <span class="title">Users</span> </a> </li>     
       </ul>
     </div>
   </div>

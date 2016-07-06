@@ -12,6 +12,7 @@ Add New Post
 tinymce.init({
   selector: "textarea",
   height: 300,
+  force_p_newlines : false,
 
   // ===========================================
   // INCLUDE THE PLUGIN
@@ -79,6 +80,15 @@ tinymce.init({
                 <input id="tags" name='tags' class="form-control" data-role="tagsinput" />
             </div>
         </div>
+        <div class="col-sm-6">
+            <label class="col-sm-3 control-label">Thumbnail</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input type="file" name="img" id="file-upload" style="display:none;" />
+                    <input name="image" class="form-control" id="filename" onclick = "openFile();"/>
+                </div>
+            </div>
+        </div>   
     </div>
     
 
@@ -92,6 +102,7 @@ tinymce.init({
 <script src="{{ asset('/js/selectboxit/jquery.selectBoxIt.min.js') }}"></script>
 <script src="{{ asset('/js/tagsinput/bootstrap-tagsinput.js') }}"></script>
 <script src="{{ asset('/js/datepicker/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('/js/upload-file.js') }}"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($)
 {
