@@ -4,10 +4,10 @@
     <div class="blog-desc">
         <h4>{{ $post->title }}</h4>
         <ul class="post-meta-links list-inline">
-            <li><a href="#"><span> <i class="fa fa-bookmark"></i></span> {{ $post->published_at->format('d F, Y')}}</a></li>
-            <li><a href="#"> <span><i class="fa fa-user"></i></span>Edo Nguyen</a></li>
-            <li><a href="#"> <span><i class="fa  fa-folder"></i></span>{{ $post->category }}</a></li>
-            <li><a href="#"> <span><i class="fa fa-comments"></i></span>0</a></li>
+            <li><span> <i class="fa fa-bookmark"></i></span> {{ $post->published_at->format('d F, Y')}}</li>
+            <li><span><i class="fa fa-user"></i></span>Edo Nguyen</li>
+            <li><span><i class="fa  fa-folder"></i></span>{{ $post->category }}</li>
+            <li><span><i class="fa fa-comments"></i></span>0</li>
         </ul>
         {!! $post->content !!}
         

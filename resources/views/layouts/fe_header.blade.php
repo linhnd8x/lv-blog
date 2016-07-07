@@ -8,19 +8,19 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="{{ url('/') }}">
                             <img src="/images/logo2.png" alt="">
                         </a>
                  </div><!--Navbar header End-->
                     <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
                         <ul class="nav navbar-nav navbar-right ">
-                            <li class="active"> <a href="#slider_part" >Home </a></li>
-                            <li><a href="#service"  >Services</a> </li>
-                            <li><a href="#portfolio"  >Portfolio</a> </li>
-                            <li><a href="#about" >About Us </a> </li>
-                            <li><a href="#team" >Our Team </a> </li>
-                            <li><a href="#blog" >Blog</a> </li>
-                            <li><a href="#contact" >Contact Us</a> </li>
+                            <li class="active"><a href="{{ url('/') }}" >Home </a></li>
+                            <li><a href="{{ url('/') . '#service' }}"  >Services</a> </li>
+                            <li><a href="{{ url('/') . '#portfolio' }}"  >Portfolio</a> </li>
+                            <li><a href="{{ url('/') . '#about' }}" >About Us </a> </li>
+                            <li><a href="{{ url('/') . '#team' }}" >Our Team </a> </li>
+                            <li><a href="{{ url('/') . '#blog' }}" >Blog</a> </li>
+                            <li><a href="{{ url('/') . '#contact' }}" >Contact Us</a> </li>
                         </ul>
                     </nav>
         </div><!-- /.container-fluid -->

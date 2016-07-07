@@ -132,7 +132,7 @@ a{
 
 .btn-main{
     padding: 10px 25px;
-    border-radius: 3px;
+    /*border-radius: 3px;*/
     border: medium none;
     vertical-align: middle;
     cursor: pointer;
@@ -2129,8 +2129,8 @@ padding: 8px 15px;
     margin-bottom: 10px;
 }
 .blog-form .btn-main{
-    margin-top: 10px;
-    border-radius: 2px;
+    margin: 10px 0;
+    /*border-radius: 2px;*/
 }
 
 
@@ -2630,6 +2630,13 @@ iframe{
 .blog-post {
     border: 1px solid #C9C9C9;
 }
-.post-item {
+.blog-desc {
     border-bottom: 1px solid #DDD;
+}
+.read-me {
+    margin: 0px !important;
+    padding-bottom: 10px;
+}
+.sumary-text {
+    padding: 15px 0;
 }

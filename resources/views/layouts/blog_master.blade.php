@@ -173,7 +173,7 @@
                         <div class="photo-stream">
                             <h4>Photo stream</h4>
                             <div class="b-stream">
-                                <a href="#"><img src="images/blog/pic6.jpg" alt="pic1" class="img-responsive"></a>
+                                <a href="#"><img src="/images/blog/pic6.jpg" alt="pic1" class="img-responsive"></a>
                             </div>
                             <div class="b-stream">
                                 <a href="#"><img src="/images/blog/pic7.jpg" alt="pic1" class="img-responsive"></a>
@@ -206,7 +206,7 @@
                                 <a href="#"><img src="/images/blog/pic9.jpg" alt="pic1" class="img-responsive"></a>
                             </div>
                             <div class="b-stream">
-                                <a href="#"><img src="images/blog/pic10.jpg" alt="pic1" class="img-responsive"></a>
+                                <a href="#"><img src="/images/blog/pic10.jpg" alt="pic1" class="img-responsive"></a>
                             </div>
 
                         </div>
