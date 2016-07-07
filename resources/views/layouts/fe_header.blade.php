@@ -14,13 +14,11 @@
                  </div><!--Navbar header End-->
                     <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
                         <ul class="nav navbar-nav navbar-right ">
-                            <li class="active"><a href="{{ url('/') }}" >Home </a></li>
-                            <li><a href="{{ url('/') . '#service' }}"  >Services</a> </li>
-                            <li><a href="{{ url('/') . '#portfolio' }}"  >Portfolio</a> </li>
-                            <li><a href="{{ url('/') . '#about' }}" >About Us </a> </li>
-                            <li><a href="{{ url('/') . '#team' }}" >Our Team </a> </li>
-                            <li><a href="{{ url('/') . '#blog' }}" >Blog</a> </li>
-                            <li><a href="{{ url('/') . '#contact' }}" >Contact Us</a> </li>
+                            <li><a href="{{ route('homepage') . '#slider_part' }}" >Home </a></li>
+                            <li><a href="{{ route('homepage') . '#about' }}" > About Me</a> </li>
+                            <li><a href="{{ route('homepage') . '#portfolio' }}" >My Work</a> </li>
+                            <li><a href="{{ route('homepage') . '#blog' }}" >Blog</a> </li>
+                            <li><a href="{{ route('homepage') . '#contact' }}" >Contact Me</a> </li>
                         </ul>
                     </nav>
         </div><!-- /.container-fluid -->

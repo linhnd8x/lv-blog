@@ -221,7 +221,7 @@ section{
 }
 #section_header{
     background:#fff;
-    padding: 10px 0px;
+    padding: 0px 0px;
     -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
 }
@@ -2630,8 +2630,8 @@ iframe{
 .blog-post {
     border: 1px solid #C9C9C9;
 }
-.blog-desc {
-    border-bottom: 1px solid #DDD;
+a.active{
+    color: #EE3B24!important;
 }
 .read-me {
     margin: 0px !important;

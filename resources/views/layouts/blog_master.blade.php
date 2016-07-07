@@ -33,10 +33,8 @@
         <link rel="stylesheet" href="{{ asset('/css/fe_custom.css') }}">
         <!-- Responsive -->
         <link rel="stylesheet" href="{{ asset('/css/responsive.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/responsive.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/jquery.fancybox.css?v=2.1.5') }}" type="text/css" media="screen" />
 	
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <link href='http://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500' rel='stylesheet' type='text/css'>
     </head>
@@ -46,7 +44,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-@extends('layouts.fe_header')
+@include('layouts.fe_header')
 <!-- Portfolio works Start -->
     <section id="banner">
         <div class="container">
@@ -168,48 +166,6 @@
                               </div>
                             </div>
                         </div> <!-- blog tab end -->
-                        
-                        
-                        <div class="photo-stream">
-                            <h4>Photo stream</h4>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic6.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic7.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic8.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic9.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic10.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic11.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic12.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic6.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic7.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic8.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic9.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-                            <div class="b-stream">
-                                <a href="#"><img src="/images/blog/pic10.jpg" alt="pic1" class="img-responsive"></a>
-                            </div>
-
-                        </div>
 
                         <div class="clearfix"></div>
                         <div class="right-tags">
@@ -227,7 +183,6 @@
             <!-- sidebar end -->
 
             </div><!-- Portfolio item row end -->
-        </div><!-- Portfolio item container end -->
 </section>  <!-- Portfolio Section End -->
 
 <!-- Footer Start -->
@@ -241,39 +196,38 @@
 		<!-- initialize jQuery Library -->
 		<!-- <script type="text/javascript" src="js/jquery2.js"></script> -->
         <!-- Main jquery -->
-        <!-- <script src="{{ asset('/js/jquery2.js') }}"></script> -->
-        <script src="{{ asset('/js/jquery-1.11.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery-1.11.1.min.js"></script>
         <!-- Bootstrap jQuery -->
-        <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+         <script src="{{route('homepage')}} . /js/bootstrap.min.js"></script>
         <!-- Owl Carousel -->
-        <script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
+        <script src="{{route('homepage')}} . /js/owl.carousel.min.js"></script>
         <!-- Isotope -->
-        <script src="{{ asset('/js/jquery.isotope.js') }}"></script>
+        <script src="{{route('homepage')}} . /js/jquery.isotope.js"></script>
         <!-- Pretty Photo -->
-        <script src="{{ asset('/js/jquery.prettyPhoto.js') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.prettyPhoto.js"></script>
         <!-- SmoothScroll -->
-        <script src="{{ asset('/js/smooth-scroll.js') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/smooth-scroll.js"></script>
         <!-- Image Fancybox -->
-        <script src="{{ asset('/js/jquery.fancybox.pack.js?v=2.1.5') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.fancybox.pack.js?v=2.1.5"></script>
         <!-- Counter  -->
-        <script src="{{ asset('/js/jquery.counterup.min.js') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.counterup.min.js"></script>
         <!-- waypoints -->
-        <script src="{{ asset('/js/waypoints.min.js') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/waypoints.min.js"></script>
         <!-- Bx slider -->
-        <script src="{{ asset('/js/jquery.bxslider.min.js') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.bxslider.min.js"></script>
         <!-- Scroll to top -->
-        <script src="{{ asset('/js/jquery.scrollTo.js') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.scrollTo.js"></script>
         <!-- Easing js -->
-        <script src="{{ asset('/js/jquery.easing.1.3.js') }}"></script>
-          <!-- PrettyPhoto -->
-        <script src="{{ asset('/js/jquery.singlePageNav.js') }}"></script>
+        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.easing.1.3.js"></script>
+         <!-- PrettyPhoto -->
+        <script src="{{route('homepage')}} . /js/jquery.singlePageNav.js"></script>
         <!-- Wow Animation -->
-        <script src="{{ asset('/js/wow.min.js') }}"></script>
+        <script type="js/javascript" src="{{route('homepage')}} . /js/wow.min.js"></script>
         <!-- Google Map  Source -->
-        <script src="{{ asset('/js/gmaps.js') }}"></script>
-             <!-- Custom js -->
-       <script src="{{ asset('/js/custom.js') }}"></script>
-	   <!-- <script>
+        <!-- <script type="text/javascript" src="js/gmaps.js"></script>-->
+        <!-- Custom js -->
+        <script src="{{route('homepage')}} . /js/custom.js"></script>
+	    <!-- <script>
               $('#portfolio-slider').bxSlider({
                 mode: 'fade',
                 autoControls: false

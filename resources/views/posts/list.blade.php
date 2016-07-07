@@ -1,7 +1,7 @@
 @extends('layouts.blog_master')
 @section('list-post')
 
-    @if ($posts)
+    @if (! $posts->isEmpty())
     @foreach ($posts as $post)
     <div class="blog-desc">
         <h4>{{ $post->title }}</h4>
@@ -24,11 +24,14 @@
         
     </div>
     @endforeach
-    @endif
+   
     <div class="pagination-area text-center">
         <ul class="pagination">
             {!! $posts->render() !!}
         </ul>
     </div>
+    @else
+        <p class="sumary-text">No record</p>
+    @endif
 @endsection
  
