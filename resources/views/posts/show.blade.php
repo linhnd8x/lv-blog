@@ -5,9 +5,9 @@
         <h4>{{ $post->title }}</h4>
         <ul class="post-meta-links list-inline">
             <li><span> <i class="fa fa-bookmark"></i></span> {{ $post->published_at->format('d F, Y')}}</li>
-            <li><span><i class="fa fa-user"></i></span>Edo Nguyen</li>
-            <li><span><i class="fa  fa-folder"></i></span>{{ $post->category }}</li>
-            <li><span><i class="fa fa-comments"></i></span>0</li>
+            <li><span><i class="fa fa-user"></i></span> Edo Nguyen</li>
+            <li><span><i class="fa  fa-folder"></i></span> {{ $post->category }}</li>
+            <li><span><i class="fa fa-comments"></i></span> 0</li>
         </ul>
         {!! $post->content !!}
         
@@ -44,43 +44,24 @@
 	<div class="related-post">
 	    <h4>Related Posts</h4>
 	    <hr>
+	    @foreach ($relatepost as $rpost)
 	    <div class="col-md-4 col-sm-4">
 	        <div class="rel-post">
-	            <a href="#">
-	                <img src="/images/blog/pic6.jpg" alt="" lass="img-responsive">
+	        	<a href="{{ url('/posts') . '/' . $rpost->slug }}"><img src="/images/blog/{{ ($rpost->image && strlen($rpost->image) > 14 ) ? substr($rpost->image,0,8) . '/' . $rpost->image : 'pic4.jpg' }}" alt="" class="img-responsive">
+	       
 	                <div class="caption">
-	                    <h4>There is a great tale</h4>
-	                   <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-	                </div>
+	                    <h4>{{$rpost->title}}</h4>
 	            </a>
+	                   {!! str_limit($rpost->content, 50) !!}
+	                </div>
+	            
 	        </div>
 	    </div>
-	    <div class="col-md-4 col-sm-4">
-	        <div class="rel-post">
-	            <a href="#">
-	                <img src="/images/blog/pic7.jpg" alt="" lass="img-responsive">
-	                <div class="caption">
-	                    <h4>Let go out for once</h4>
-	                    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-	                </div>
-	            </a>
-	        </div>
-	    </div>
-	    <div class="col-md-4 col-sm-4">
-	        <div class="rel-post">
-	            <a href="#">
-	                <img src="/images/blog/pic8.jpg" alt="" lass="img-responsive">
-	                <div class="caption">
-	                    <h4>Why you are late!</h4>
-	                    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-	                </div>
-	            </a>
-	        </div>
-	    </div>
+	    @endforeach
 	</div>
 	<div class="clearfix"></div>
 	<!-- comments start -->
-	    <div class="comments">
+<!-- 	    <div class="comments">
 	        <h4>Comments</h4>
 	        <hr>
 	        <ul class="media-list">
@@ -115,9 +96,9 @@
 	                  </div>
 	            </li>
 	        </ul>       
-	    </div>
+	    </div> -->
 	<!-- comments End -->
-	<div class="blog-form">
+	<!-- <div class="blog-form">
 	    <h4>Leave for a <span>comment </span></h4>
 	    <hr>
 	   
@@ -143,5 +124,5 @@
 	             </div>
 	         </div>
 	     </div>
-	</div>
+	</div> -->
 	@endsection

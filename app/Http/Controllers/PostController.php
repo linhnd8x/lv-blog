@@ -18,7 +18,9 @@ class PostController extends Controller
     {
         $posts = Post::select(DB::raw('posts.*, categories.category'))
                         ->join('categories', 'categories.id', '=', 'posts.category_id')
-                        ->where('posts.del_flg',0)->orderBy('posts.created_at','desc')->paginate(10);
+                        ->where('posts.del_flg',0)
+                        ->where('active', 1)
+                        ->orderBy('posts.created_at','desc')->paginate(10);
         if(! $posts) {
             return redirect('/')->withErrors('requested page not found');
         }
@@ -34,7 +36,7 @@ class PostController extends Controller
     }
 	public function index()
 	{
-        $postData = Post::where('del_flg',0)->orderBy('id','desc')->get();
+        $postData = Post::where('del_flg',0)->where('active',1)->orderBy('id','desc')->get();
         $postArr = array ();
         if ($postData) {
             foreach ($postData as $key => $post) {
@@ -139,10 +141,11 @@ class PostController extends Controller
     }
     public function show($slug)
     {
-        // $post = Post::where('slug',$slug)->first();
         $post = Post::select(DB::raw('posts.*, categories.category'))
                         ->join('categories', 'categories.id', '=', 'posts.category_id')
-                        ->where('posts.slug',$slug)->first();
+                        ->where('posts.slug',$slug)
+                        ->where('posts.active', 1)
+                        ->first();
         if(! $post) {
             return redirect('/')->withErrors('requested page not found');
         }
@@ -154,7 +157,9 @@ class PostController extends Controller
     {
         $posts = Post::select(DB::raw('posts.*, categories.category'))
                         ->join('categories', 'categories.id', '=', 'posts.category_id')
-                        ->where('posts.del_flg',0)->orderBy('id','desc')->paginate(3);
+                        ->where('posts.del_flg',0)
+                        ->where('posts.active', 1)
+                        ->orderBy('id','desc')->paginate(3);
         if(! $posts) {
             return redirect('/')->withErrors('requested page not found');
         }
@@ -172,7 +177,7 @@ class PostController extends Controller
     public function edit(Request $request,$slug)
     {
         $category = Category::select('id', 'category')->distinct()->where('del_flg', 0)->get();
-        $post = Post::where('slug',$slug)->first();
+        $post = Post::where('slug',$slug)->where('del_flg', 0)->where('active', 1)->first();
         $postTags = PostTag::join('tags', 'tags.id', '=', 'blog_post_tags.tag_id')->where('post_id', $post->id)->get();
         $tags = '';
         foreach ($postTags as $val) {

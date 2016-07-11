@@ -929,7 +929,7 @@ padding: 8px 15px;
     -o-transition: all .4s ease 0s;
     transition: all .4s ease 0s;
 }
-.single-feature:hover,.single-feature:hover.single-feature:after,
+.single-feature:hover,.single-feature:hover.single-feature:after
 .nav-tabs li.active .single-feature,.nav-tabs li.active .single-feature:after{
     background: #eee;
     opacity:1;
@@ -1961,6 +1961,7 @@ padding: 8px 15px;
     margin-right: 10px;
 }
 .tags1 a{
+    margin-right: 3px;
     padding: 6px 15px;
     border-radius: 3px;
     color: #FFF;
@@ -2639,4 +2640,42 @@ a.active{
 }
 .sumary-text {
     padding: 15px 0;
+}
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    /*-webkit-border-radius: 5px;
+    border-radius: 5px;*/
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+   /* -webkit-border-radius: 5px;
+    border-radius: 5px;*/
+    background: rgba(255,0,0,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgb(238, 59, 36); 
+}
+.read-me a {
+    padding: 8px 10px;
+    background: none repeat scroll 0% 0% #2C2C2C;
+    color: #C4C4C4;
+    font-size: 14px;
+    text-decoration: none;
+}
+.read-me a:hover {
+    color: #fff;
+}
+.read-me a:hover {
+    background: #EE3B24;
+}
+.single-post h4:hover {
+    color: rgba(255,0,0,0.8);
 }

@@ -97,12 +97,15 @@ class TagController extends Controller
     public function show($slug)
     {
 
-        $posts = Post::select(DB::raw('posts.*, tags.*'))
+        $posts = Post::select(DB::raw('posts.*, tags.*, posts.slug as slug, categories.category'))
                         ->join('blog_post_tags', 'blog_post_tags.post_id', '=', 'posts.id')
                         ->join('tags', 'tags.id', '=', 'blog_post_tags.tag_id')
+                        ->join('categories', 'posts.category_id', '=', 'categories.id')
                         ->where('posts.del_flg',0)
+                        ->where('posts.active', 1)
                         ->where('tags.slug',$slug)
                         ->orderBy('posts.id','desc')->paginate(3);
+
         if(! $posts) {
             return redirect('/')->withErrors('requested page not found');
         }

@@ -17,7 +17,7 @@
          <!-- CSS
          ================================================== -->
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
         <!-- FontAwesome -->
         <link rel="stylesheet" href="{{ asset('/css/fonts/fontawesome/css/font-awesome.min.css') }}">
         <!-- Animation -->
@@ -98,9 +98,11 @@
                             @foreach ($latestpost as $lpost)
                                 <li class="col-md-12 col-sm-4"> 
                                     <div class="single-post">
-                                        <a href="{{ url('/posts') . '/' . $lpost->slug }}"><img src="/images/blog/{{ ($lpost->image && strlen($lpost->image) > 14 ) ? substr($lpost->image,0,8) . '/' . $lpost->image : 'pic4.jpg' }}" alt="" class="img-responsive"></a>
-                                        <p>{{ $lpost->title }}</p>
+                                        <a href="{{ url('/posts') . '/' . $lpost->slug }}"><img src="/images/blog/{{ ($lpost->image && strlen($lpost->image) > 14 ) ? substr($lpost->image,0,8) . '/' . $lpost->image : 'pic4.jpg' }}" alt="" class="img-responsive">
+                                            <h4>{{ $lpost->title }}</h4>
+                                        </a>
                                         <span>3 days ago</span>
+                                        </a>
                                     </div>
                                 </li>
                             @endforeach
@@ -120,10 +122,10 @@
                             @endforeach
                             </ul>
                         </div>  <!-- blog catagory end -->
-                        
+                        <!--
                         <div class="blog-tab">
                             <div role="tabpanel">
-                              <!-- Nav tabs -->
+                             #Nav tabs
                               <ul class="nav nav-tabs tab-default" role="tablist">
                                     <li class="active">
                                         <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Tweets</a>
@@ -133,7 +135,7 @@
                                     </li>
                               </ul>
 
-                              <!-- Tab panes -->
+                              #Tab panes
                               <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="home">
                                     <div class="single-tweet">
@@ -165,7 +167,8 @@
                                  </div>
                               </div>
                             </div>
-                        </div> <!-- blog tab end -->
+                        </div>-->
+                        <!-- blog tab end -->
 
                         <div class="clearfix"></div>
                         <div class="right-tags">

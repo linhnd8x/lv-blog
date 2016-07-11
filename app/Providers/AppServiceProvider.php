@@ -18,21 +18,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $cats = Category::select(DB::raw('categories.*, count(posts.category_id) as postItems'))
+        $cats = Category::select(DB::raw('categories.*, count(posts.category_id) as postItems, posts.active'))
                                 ->join('posts', 'posts.category_id', '=', 'categories.id')
                                 ->groupby('posts.category_id')
                                 ->having('categories.del_flg', '=', 0)
+                                ->having('posts.active', "=", 1)
                                 ->get();
         $stag = Tag::where('del_flg', 0)->get();
-        $latespost = Post::where('del_flg', 0)->orderby('published_at', 'desc')->take(3)->get();
+        $latestpost = Post::where('del_flg', 0)->where('active', 1)->orderby('published_at', 'desc')->take(3)->get();
+        $relatepost = Post::where('del_flg', 0)->where('active', 1)->orderby('published_at', 'desc')->take(3)->get();
         view()->share('cats',$cats);
         view()->share('stag',$stag);
-        view()->share('latestpost',$latespost);
-        // view()->composer('layouts.blog_master', function($view)
-        // {
-
-        //     $view->withCats($cats);
-        // });
+        view()->share('latestpost',$latestpost);  
+        view()->share('relatepost',$relatepost);
     }
 
     /**

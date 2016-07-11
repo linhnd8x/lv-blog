@@ -99,6 +99,7 @@ class CategoryController extends Controller
         $posts = Post::select(DB::raw('posts.*, categories.category'))
                         ->join('categories', 'categories.id', '=', 'posts.category_id')
                         ->where('posts.del_flg',0)
+                        ->where('posts.active',1)
                         ->where('categories.slug',$slug)
                         ->orderBy('id','desc')->paginate(3);
         if(! $posts) {

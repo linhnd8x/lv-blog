@@ -55,6 +55,7 @@
   <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. --> 
   <!-- Adding class "toggle-others" will keep only one menu item open at a time. --> 
   <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+@if (! (Request::is('auth/*') || Request::is('password/*')))
   <div class="sidebar-menu toggle-others fixed">
     <div class="sidebar-menu-inner">
       <header class="logo-env"> 
@@ -69,16 +70,16 @@
         <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
         <div class="settings-icon" style="display:none"> <a href="#" data-toggle="settings-pane" data-animate="true"> <i class="linecons-cog"></i> </a> </div>
       </header>
+      
       <ul id="main-menu" class="main-menu">
-        <!-- add class "multiple-expanded" to allow multiple submenus to open --> 
-        <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-        <li><a href="{{ url('posts/') }}"><i class="fa fa-newspaper-o"></i> <span class="title">Posts</span> </a> </li>
-        <li> <a href="{{ url('category/') }}"><i class="fa fa-folder-o"></i> <span class="title">Categories</span> </a> </li>
-        <li> <a href="{{ url('tag/') }}"><i class="fa fa-tags"></i> <span class="title">Tags</span> </a> </li>
-        <li> <a href="{{ url('user/') }}"><i class="fa fa-user"></i> <span class="title">Users</span> </a> </li>     
+        <li class="{{ (Route::current()->getName() == 'home') ? 'active' : '' }}"><a href="{{ url('posts/') }}"><i class="fa fa-newspaper-o"></i> <span class="title">Posts</span> </a> </li>
+        <li class="{{ (Route::current()->getName() == 'category') ? 'active' : '' }}"><a href="{{ url('category/') }}"><i class="fa fa-folder-o"></i> <span class="title">Categories</span> </a> </li>
+        <li class="{{ (Route::current()->getName() == 'tag') ? 'active' : '' }}"><a href="{{ url('tag/') }}"><i class="fa fa-tags"></i> <span class="title">Tags</span> </a> </li>
+        <li class="{{ (Route::current()->getName() == 'user') ? 'active' : '' }}"><a href="{{ url('user/') }}"><i class="fa fa-user"></i> <span class="title">Users</span> </a> </li>     
       </ul>
     </div>
   </div>
+@endif
   <div class="main-content">
     <nav class="navbar user-info-navbar"  role="navigation"><!-- User Info, Notifications and Menu Bar --> 
       
@@ -113,6 +114,7 @@
   <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" --> 
   <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) --> 
   <!-- Or class "fixed" to  always fix the footer to the end of page -->
+  @if (! (Request::is('auth/*') || Request::is('password/*')))
   <footer class="main-footer">
     <div class="footer-inner"> 
       
@@ -123,6 +125,7 @@
       <div class="go-up"> <a href="#" rel="go-top"> <i class="fa-angle-up"></i> </a> </div>
     </div>
   </footer>
+  @endif
   </div>
 </div>
 </div>
