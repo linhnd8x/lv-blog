@@ -48,6 +48,7 @@ class Message
      */
     public function sender($address, $name = null)
     {
+                 dd($address); die;
         $this->swift->setSender($address, $name);
 
         return $this;

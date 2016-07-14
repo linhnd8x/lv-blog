@@ -44,7 +44,6 @@ trait ResetsPasswords
         if (property_exists($this, 'linkRequestView')) {
             return view($this->linkRequestView);
         }
-
         if (view()->exists('auth.passwords.email')) {
             return view('auth.passwords.email');
         }
@@ -79,6 +78,7 @@ trait ResetsPasswords
             $this->getSendResetLinkEmailCredentials($request),
             $this->resetEmailBuilder()
         );
+
 
         switch ($response) {
             case Password::RESET_LINK_SENT:
