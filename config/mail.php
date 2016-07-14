@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'nguyenduylinh.ta@gmail.com', 'name' => 'Linh'],
+    'from' => ['address' => 'abc@gmail.com', 'name' => 'Linh'],
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME','nguyenduylinh.ta@gmail.com'),
+    'username' => env('MAIL_USERNAME','abc.ta@gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD', 'colenlinh123'),
+    'password' => env('MAIL_PASSWORD', 'password'),
 
     /*
     |--------------------------------------------------------------------------
