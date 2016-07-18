@@ -9,12 +9,12 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="/images/logo2.png" alt="">
+                            <img src="/images/logo.png" alt="">
                         </a>
                  </div><!--Navbar header End-->
                     <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
                         <ul class="nav navbar-nav navbar-right ">
-                            <li><a href="{{ route('homepage') . '#slider_part' }}" >Home </a></li>
+                            <li><a href="{{ route('homepage') . '#slider' }}" >Home </a></li>
                             <li><a href="{{ route('homepage') . '#about' }}" > About Me</a> </li>
                             <li><a href="{{ route('homepage') . '#portfolio' }}" >My Work</a> </li>
                             <li><a href="{{ route('homepage') . '#blog' }}" >Blog</a> </li>

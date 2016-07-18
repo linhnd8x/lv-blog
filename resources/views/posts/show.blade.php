@@ -14,12 +14,14 @@
     </div>
     <hr>
     <div class="clearfix"></div>
+    	@if (! $tags -> isEmpty())
         <div class="tags1">
             <p>Tags: </p>
             @foreach ($tags as $tag)
 				<a href="{{ url('tag/') . '/' . $tag->slug }}">{{ $tag->tag }} </a>
 	        @endforeach
         </div>
+        @endif
         <!-- <div class="clearfix"></div> -->
         <div class="share1">
            <h4>Share this :</h4>
@@ -28,19 +30,20 @@
                 <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li> <a href="#"><i class="fa fa-google-plus"></i> </a></li>
                 <li><a href="#"> <i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"> <i class="fa fa-pinterest"></i></a></li>
             </ul>
         </div>
 	<div class="clearfix"></div>
 	<hr>
-	<div class="about-auther">
+<!-- 	<div class="about-auther">
 	    <h4>About the Author</h4>
 	    <hr>
 	     <div class="well">
 	        <img src="/images/team/pic1.jpg" alt="alt" class="img-responsive">
 	        <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.</p>
 	    </div>
-	</div><!-- About auther end -->
+	</div> -->
+
+	<!-- About auther end -->
 	<div class="related-post">
 	    <h4>Related Posts</h4>
 	    <hr>

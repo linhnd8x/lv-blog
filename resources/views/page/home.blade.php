@@ -7,8 +7,8 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="feature_header text-center">
-                    <h3 class="feature_title">Our <b>Blog</b></h3>
-                    <h4 class="feature_sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h4>
+                    <h3 class="feature_title">My <b>Blog</b></h3>
+                    <h4 class="feature_sub">This is note my experience. </h4>
                     <div class="divider"></div>
                 </div>
             </div>  <!-- Col-md-12 End -->

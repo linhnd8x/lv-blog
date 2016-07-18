@@ -7,7 +7,7 @@
     <!-- Basic Page Needs
     ================================================== -->
         <meta charset="utf-8">
-        <title>Cypras-One page html5 template</title>
+        <title>Edo Blog</title>
         <meta name="description" content="">
         <!-- Mobile Specific Metas
     ================================================== -->
@@ -44,25 +44,27 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-@include('layouts.fe_header')
-<!-- Portfolio works Start -->
+    @extends('layouts.fe_header')
+
+    <!-- Portfolio works Start -->
     <section id="banner">
         <div class="container">
             <div class="row">
                 <div class="blog-header text-center">
-                    <h2>Single Blog Details</h2>
-                     <ul class="breadcrumb">
+                    <h2>Edo Blog</h2>
+                    <p>Welcome to my page</p>
+                     <!-- <ul class="breadcrumb">
                         <li>home</li>
                         <li>blog</li>
                         <li>single post details</li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
     </section>
     <section id="blog-single">
         <div class="container">
-                <!-- Portfolio item slider start -->
+            <!-- Portfolio item slider start -->
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 blog-post">
 <!--                 <div class="portfolio-slider-wrapper">
                     <ul id="portfolio-slider">
@@ -199,37 +201,9 @@
 		<!-- initialize jQuery Library -->
 		<!-- <script type="text/javascript" src="js/jquery2.js"></script> -->
         <!-- Main jquery -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/jquery-1.11.1.min.js"></script>
         <!-- Bootstrap jQuery -->
-         <script src="{{route('homepage')}} . /js/bootstrap.min.js"></script>
-        <!-- Owl Carousel -->
-        <script src="{{route('homepage')}} . /js/owl.carousel.min.js"></script>
-        <!-- Isotope -->
-        <script src="{{route('homepage')}} . /js/jquery.isotope.js"></script>
-        <!-- Pretty Photo -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.prettyPhoto.js"></script>
-        <!-- SmoothScroll -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/smooth-scroll.js"></script>
-        <!-- Image Fancybox -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.fancybox.pack.js?v=2.1.5"></script>
-        <!-- Counter  -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.counterup.min.js"></script>
-        <!-- waypoints -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/waypoints.min.js"></script>
-        <!-- Bx slider -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.bxslider.min.js"></script>
-        <!-- Scroll to top -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.scrollTo.js"></script>
-        <!-- Easing js -->
-        <script type="text/javascript" src="{{route('homepage')}} . /js/jquery.easing.1.3.js"></script>
-         <!-- PrettyPhoto -->
-        <script src="{{route('homepage')}} . /js/jquery.singlePageNav.js"></script>
-        <!-- Wow Animation -->
-        <script type="js/javascript" src="{{route('homepage')}} . /js/wow.min.js"></script>
-        <!-- Google Map  Source -->
-        <!-- <script type="text/javascript" src="js/gmaps.js"></script>-->
-        <!-- Custom js -->
-        <script src="{{route('homepage')}} . /js/custom.js"></script>
+        <script src="{{route('homepage')}}/js/bootstrap.min.js"></script>
 	    <!-- <script>
               $('#portfolio-slider').bxSlider({
                 mode: 'fade',

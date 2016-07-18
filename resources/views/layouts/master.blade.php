@@ -8,7 +8,7 @@
     <!-- Basic Page Needs
     ================================================== -->
         <meta charset="utf-8">
-        <title>Cypras-One page html5 template</title>
+        <title>Edo Nguyen</title>
         <meta name="description" content="">
         <!-- Mobile Specific Metas
     ================================================== -->
@@ -18,7 +18,7 @@
         <!-- CSS
         ================================================== -->
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
         <!-- FontAwesome -->
         <link rel="stylesheet" href="{{ asset('/css/fonts/fontawesome/css/font-awesome.min.css') }}">
         <!-- Animation -->
@@ -46,11 +46,10 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
- @extends('layouts.fe_header')
-
+    @extends('layouts.fe_header')
 
     <!-- Slider start -->
-    <section id="slider_part">
+    <section id="slider">
          <div class="carousel slide" id="carousel-example-generic" data-ride="carousel">
             <!-- Indicators -->
              <ol class="carousel-indicators text-center">
@@ -66,7 +65,7 @@
                     </div>
                     <div class="carousel-caption">
                         <div class="col-md-12 col-xs-12 text-center">
-                      <h2>Cyprass</h2>
+                      <h2>Edo Blog</h2>
                             <h3 class="animated2"> <b>Creative</b> Modern and clean </h3>
                             <div class="line"></div>
                             <p class="animated3">Unique clean design</p>
@@ -79,7 +78,7 @@
                     </div>
                     <div class="carousel-caption">
                         <div class="col-md-12 col-xs-12 text-center">
-                    <h2>Cyprass</h2>
+                    <h2>Edo Blog</h2>
                             <h3 class="animated3"> responsive <b>Flat </b>design</h3>
                             <div class="line"></div>
                             <p class="animated2">best choice for you</p>
@@ -92,8 +91,8 @@
                     </div>
                     <div class="carousel-caption">
                         <div class="col-md-12 col-xs-12 text-center">
-                    <h2>Cyprass</h2>
-                            <h3 class="animated3"> We're crazy <b>coders</b></h3>
+                    <h2>Edo Blog</h2>
+                            <h3 class="animated3"> A Funny <b>Life</b></h3>
                             <div class="line"></div>
                             <p class="animated2"> way to success</p>
                         </div>
@@ -214,7 +213,6 @@
     </section>
     <!-- About details end -->
 
-    
     <!-- Portfolio works Start -->
 
     <section id="portfolio">
@@ -529,38 +527,37 @@
     <!-- initialize jQuery Library -->
 
         <!-- initialize jQuery Library -->
-        <!-- Main jquery -->
-        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/jquery-1.11.1.min.js"></script>
         <!-- Bootstrap jQuery -->
-        <script src="js/bootstrap.min.js"></script>
+         <script src="{{route('homepage')}}/js/bootstrap.min.js"></script>
         <!-- Owl Carousel -->
-        <script src="js/owl.carousel.min.js"></script>
+        <script src="{{route('homepage')}}/js/owl.carousel.min.js"></script>
         <!-- Isotope -->
-        <script src="js/jquery.isotope.js"></script>
+        <script src="{{route('homepage')}}/js/jquery.isotope.js"></script>
         <!-- Pretty Photo -->
-        <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/jquery.prettyPhoto.js"></script>
         <!-- SmoothScroll -->
-        <script type="text/javascript" src="js/smooth-scroll.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/smooth-scroll.js"></script>
         <!-- Image Fancybox -->
-        <script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/jquery.fancybox.pack.js?v=2.1.5"></script>
         <!-- Counter  -->
-        <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/jquery.counterup.min.js"></script>
         <!-- waypoints -->
-        <script type="text/javascript" src="js/waypoints.min.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/waypoints.min.js"></script>
         <!-- Bx slider -->
-        <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/jquery.bxslider.min.js"></script>
         <!-- Scroll to top -->
-        <script type="text/javascript" src="js/jquery.scrollTo.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/jquery.scrollTo.js"></script>
         <!-- Easing js -->
-        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="{{route('homepage')}}/js/jquery.easing.1.3.js"></script>
          <!-- PrettyPhoto -->
-        <script src="js/jquery.singlePageNav.js"></script>
+        <script src="{{route('homepage')}}/js/jquery.singlePageNav.js"></script>
         <!-- Wow Animation -->
-        <script type="js/javascript" src="js/wow.min.js"></script>
+        <script type="js/javascript" src="{{route('homepage')}}/js/wow.min.js"></script>
         <!-- Google Map  Source -->
         <!-- <script type="text/javascript" src="js/gmaps.js"></script>-->
         <!-- Custom js -->
-        <script src="js/custom.js"></script>
+        <script src="{{route('homepage')}}/js/custom.js"></script>
          <script>
         // Google Map - with support of gmaps.js
         // var map;

@@ -360,7 +360,7 @@ ul.navbar-nav > .active > a {
 
 /* Carousel Slider
 ============================================== */
-#slider_part {
+#slider {
     height: 800px;
     width: 100%;
     overflow: hidden;

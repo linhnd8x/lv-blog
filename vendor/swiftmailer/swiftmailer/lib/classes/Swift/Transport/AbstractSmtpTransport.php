@@ -300,7 +300,6 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
     /** Send the MAIL FROM command */
     protected function _doMailFromCommand($address)
     {
-                 dd($address); die;
         $this->executeCommand(
             sprintf("MAIL FROM:<%s>\r\n", $address), array(250)
             );

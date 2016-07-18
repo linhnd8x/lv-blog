@@ -36,7 +36,7 @@
 	}
 	
 	/*main Slider*/
-	#slider_part {
+	#slider {
     	height: 530px;
     	margin-top: 70px;
 	}
@@ -170,7 +170,7 @@
 	    top: -10px;
 	}
 	/*main Slider*/
-	#slider_part {
+	#slider {
     	height: 250px;
     	margin-top: 75px;
 	}
@@ -300,9 +300,6 @@
 	.share1 {
 	    height: 88px;
 	    padding: 5px 20px 30px 20px;
-	}
-	.blog-desc{
-		margin-top: -90px;
 	}
 
 	/*footer*/
