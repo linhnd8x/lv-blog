@@ -17,6 +17,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- CSS
         ================================================== -->
+         <link rel="stylesheet" href="{{ asset('/css/full-slider.css') }}">
         <!-- Bootstrap -->
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
         <!-- FontAwesome -->
@@ -47,73 +48,61 @@
         <![endif]-->
 
     @extends('layouts.fe_header')
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myslider" class="carousel slide">
+        <!-- Indicators -->
+<!--         <ol class="carousel-indicators">
+            <li data-target="#mySlider" data-slide-to="0" class="active"></li>
+            <li data-target="#mySlider" data-slide-to="1"></li>
+            <li data-target="#mySlider" data-slide-to="2"></li>
+        </ol> -->
 
-    <!-- Slider start -->
-    <section id="slider">
-         <div class="carousel slide" id="carousel-example-generic" data-ride="carousel">
-            <!-- Indicators -->
-             <ol class="carousel-indicators text-center">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-             </ol>
-
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="overlay-slide">
-                        <img src="images/banner/p5.jpg" alt="" class="img-responsive">
-                    </div>
-                    <div class="carousel-caption">
-                        <div class="col-md-12 col-xs-12 text-center">
-                      <h2>Edo Blog</h2>
-                            <h3 class="animated2"> <b>Creative</b> Modern and clean </h3>
-                            <div class="line"></div>
-                            <p class="animated3">Unique clean design</p>
-                        </div>
-                    </div>
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="overlay-slide">
+                    <div class="fill" style="background-image:url('{{ asset('/images/banner/p10.jpg') }}');"></div>
                 </div>
-                <div class="item">
-                    <div class="overlay-slide">
-                        <img src="images/banner/p3.jpg" alt="" class="img-responsive">
-                    </div>
-                    <div class="carousel-caption">
-                        <div class="col-md-12 col-xs-12 text-center">
-                    <h2>Edo Blog</h2>
-                            <h3 class="animated3"> responsive <b>Flat </b>design</h3>
-                            <div class="line"></div>
-                            <p class="animated2">best choice for you</p>
-                        </div>
-                    </div>
+                <div class="carousel-caption">
+                    <h2 class="animated2"> <b> A </b> Experience  </h2>
+                    <p class="animated3">i have learned more from my failures than from my success</p>
                 </div>
-                <div class="item">
-                    <div class="overlay-slide">
-                        <img src="images/banner/p10.jpg" alt="" class="img-responsive">
-                    </div>
-                    <div class="carousel-caption">
-                        <div class="col-md-12 col-xs-12 text-center">
-                    <h2>Edo Blog</h2>
-                            <h3 class="animated3"> A Funny <b>Life</b></h3>
-                            <div class="line"></div>
-                            <p class="animated2"> way to success</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="overlay-slide">
+                    <div class="fill" style="background-image:url('{{ asset('/images/banner/p3.jpg') }}');"></div>
                 </div>
-
-             </div>
-            <!-- End Carousel Inner -->
-
-            <!-- Controls -->
-            <div class="slides-control ">
-                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                    <span><i class="fa fa-angle-left"></i></span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                    <span><i class="fa fa-angle-right"></i></span>
-                </a>
+                <div class="carousel-caption">
+                     <h2 class="animated2"> <b> A </b> Friend  </h2>
+                    <p class="animated2"> friendship doubles your joys, and divides your sorrows</p>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="overlay-slide">
+                    <div class="fill" style="background-image:url('{{ asset('/images/banner/p5.jpg') }}');"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h2 class="animated2"> <b> A </b> Life  </h2>
+                    <p class="animated2"> live each day as if it’s your last</p>
+                </div>
             </div>
         </div>
-    </section>
-    <!--/ Slider end -->
+        <!-- Controls -->
+        <div class="slides-control ">
+            <a class="left carousel-control" href="#myslider" data-slide="prev">
+                <span><i class="fa fa-angle-left"></i></span>
+            </a>
+            <a class="right carousel-control" href="#myslider" data-slide="next">
+                <span><i class="fa fa-angle-right"></i></span>
+            </a>
+        </div>
+
+    </header>
+
+    
 
 
     <!-- Testimonial Start -->
@@ -165,20 +154,20 @@
                     <!-- Left about end -->
                         <div class="col-md-6">
                             <div class="single-progress">
-                                <label > Web design <span>40%</span></label>
+                                <label > HTML/CSS/JavaScript</label>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                    <span class="sr-only">40% Complete (success)</span>
+                                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                    <span class="sr-only">Exprienced</span>
                                   </div>
-                                 </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="single-progress">
-                                <label > Web design <span>90%</span></label>
+                                <label > PHP/MySQL </label>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                    <span class="sr-only">20% Complete</span>
+                                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                    <span class="sr-only">Exprienced</span>
                                   </div>
                                 </div>
                             </div>
@@ -189,20 +178,42 @@
                     <div class="row">
                         <div class="col-md-6">
                              <div class="single-progress">
-                                <label > Web design <span>60%</span></label>
+                                <label > Laravel/Zend Framwork/CodeIgniter/CakePHP</label>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
+                                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                    <span class="sr-only">Intermediate</span>
                                   </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="single-progress">
-                                <label > Web design <span>80%</span></label>
+                                <label > C++/C#/Java</label>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                    <span class="sr-only">80% Complete (danger)</span>
+                                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                    <span class="sr-only">Intermediate</span>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- 2nd row end -->
+                    <div class="row">
+                        <div class="col-md-6">
+                             <div class="single-progress">
+                                <label > Git/SVN</label>
+                                <div class="progress">
+                                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                    <span class="sr-only">Exprienced</span>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-progress">
+                                <label > Joomla/Drupal/Wordpress</label>
+                                <div class="progress">
+                                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                    <span class="sr-only">Intermediate</span>
                                   </div>
                                 </div>
                             </div>

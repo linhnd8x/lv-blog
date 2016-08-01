@@ -1,4 +1,4 @@
-<header id="section_header" class="navbar-fixed-top main-nav" role="banner">
+<header id ="section_header" class="navbar-fixed-top main-nav" role="banner">
         <div class="container">
             <!-- <div class="row"> -->
                  <div class="navbar-header ">
@@ -8,13 +8,12 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="/images/logo.png" alt="">
-                        </a>
+                        <a class="navbar-brand" href="{{ url('/') }}">EDO BLOG</a>
+    
                  </div><!--Navbar header End-->
                     <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
                         <ul class="nav navbar-nav navbar-right ">
-                            <li><a href="{{ route('homepage') . '#slider' }}" >Home </a></li>
+                            <li><a href="{{ route('homepage') . '#myslider' }}" >Home </a></li>
                             <li><a href="{{ route('homepage') . '#about' }}" > About Me</a> </li>
                             <li><a href="{{ route('homepage') . '#portfolio' }}" >My Work</a> </li>
                             <li><a href="{{ route('homepage') . '#blog' }}" >Blog</a> </li>

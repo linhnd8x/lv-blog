@@ -93,7 +93,8 @@
                             </div>
                          </form>
                         <!-- <hr> -->
-                        <div class="recent-post">
+                        
+                        <!-- <div class="recent-post">
                             <h4>Latest posts</h4>
                             <hr>
                             <ul>
@@ -110,8 +111,11 @@
                             @endforeach
                                                     
                             </ul>
-                        </div><!-- Recent posts end --> 
-                        <div class="clearfix"></div>
+                        </div> -->
+
+                        <!-- Recent posts end --> 
+                        
+         <!--                <div class="clearfix"></div> -->
                          <div class="blog-catagory">
                             <h4>Blog catagories</h4>
                             <ul>

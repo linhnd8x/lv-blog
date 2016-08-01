@@ -8,7 +8,7 @@
                     <h3 class="menu_head">Main Menu</h3>
                     <div class="footer_menu">
                         <ul>
-                            <li><a href="{{ route('homepage') . '#slider' }}" >Home </a></li>
+                            <li><a href="{{ route('homepage') . '#myslider' }}" >Home </a></li>
                             <li><a href="{{ route('homepage') . '#about' }}" >About me</a> </li>
                             <li><a href="{{ route('homepage') . '#portfolio' }}" >My work</a> </li>
                             <li><a href="{{ route('blog')}}" >Blog</a> </li>

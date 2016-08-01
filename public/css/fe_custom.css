@@ -233,8 +233,8 @@ section{
     margin-left: 0px!important;
 }
 .navbar-brand{
-    font-size:40px;
-    color: #222;
+    font-weight: 700;
+
 }
 .navbar-brand img{
   height: 180%;
@@ -253,7 +253,6 @@ ul.navbar-nav a {
     font-weight: 700;
     font-size: 14px;
     padding: 15px 0 15px 30px;
-    line-height: 40px;
     display: inline-block;
     text-transform: uppercase;
 }
@@ -346,11 +345,6 @@ ul.navbar-nav > .active > a{
 
 /* Carousel Slider
 ============================================== */
-#slider{
-   height: 800px;
-   width: 100%;
-   overflow:hidden;
-}
 
 .carousel-caption{
     top: 30%;
@@ -443,7 +437,7 @@ ul.navbar-nav > .active > a{
     width: 10%;
     left: 45%;
     margin:0 auto;
-    bottom:30%;
+    bottom:20%;
 }
 
 .carousel-indicators li{
@@ -474,7 +468,7 @@ ul.navbar-nav > .active > a{
 .slides-control .carousel-control{
     position: absolute;
     width: 240px;
-    top: 35%;
+    top: 45%;
     z-index:10;
 }
 
@@ -1917,12 +1911,12 @@ padding: 8px 15px;
 #banner{
     background: url("../images/slider/b6.jpg")no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 250px;
 }
 
 .blog-header{
     padding: 30px 0px 0px 20px;
-    margin-top: 225px;
+    margin-top: 70px;
 }
 .blog-header h2{
     font-size: 35px;
@@ -2603,7 +2597,7 @@ iframe{
     color:#fff;
     border-top: 1px solid#fff;
     border-bottom: 1px solid#fff;
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
     line-height: 85px;
     position: relative;

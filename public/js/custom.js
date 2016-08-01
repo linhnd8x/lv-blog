@@ -78,9 +78,9 @@ jQuery(function($) {
   /*  Main slideshow
   /* ----------------------------------------------------------- */
 
-  $('#slider').carousel({
+  $('#myslider').carousel({
     pause: true,
-    interval: 100000,
+    interval: 10000,
   });
 
   /* ----------------------------------------------------------- */
